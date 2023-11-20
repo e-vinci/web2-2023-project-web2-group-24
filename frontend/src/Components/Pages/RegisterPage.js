@@ -1,5 +1,13 @@
+import { clearPage } from '../../utils/render';
+import Navigate from '../Router/Navigate';
 
 const RegisterPage = () => {
+    clearPage();
+    renderRegisterPage();
+    
+};
+
+function renderRegisterPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
     <section style="background-color: #0095B6;">
@@ -77,7 +85,7 @@ const RegisterPage = () => {
                             </div>
                             <hr class="mx-n3">
                             <div class="mx-5">
-                               <a href="http://localhost:8080/connexion">Déjà un compte ? Connectez-vous ici</a>
+                               <a href="" id="toConnexion">Déjà un compte ? Connectez-vous ici</a>
                             </div>
    
                             </div>
@@ -95,6 +103,11 @@ const RegisterPage = () => {
         </div>
     </section>
     `
+
+    const link = document.querySelector('#toConnexion');
+    link.addEventListener('click', () => {
+            Navigate('/connexion');
+    });
 };
 
 
