@@ -21,8 +21,8 @@ const Navbar = () => {
     </div>
 
     <div class="nav nav-underline pe-5">
-      <a class="nav-link" style="font-size: 20px" href="#" data-uri="">Se connecter</a>
-      <a class="nav-link" style="font-size: 20px" href="#" data-uri="">S'inscrire</a>
+      <a class="nav-link" style="font-size: 20px" href="#" data-uri="/connexion">Se connecter</a>
+      <a class="nav-link" style="font-size: 20px" href="#" data-uri="/inscription">S'inscrire</a>
     </div>
 
   </div>
