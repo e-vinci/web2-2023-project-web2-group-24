@@ -48,7 +48,7 @@ function renderRegisterPage() {
                             <div class="row align-items-center pt-4 pb-3">
                                 <div class="col-md-3 ps-5">
     
-                                    <h6 class="mb-0">Nom d'utilisateur*</h6>
+                                    <h6 class="mb-0">Adresse e-mail*</h6>
     
                                 </div>
                                 <div class="col-md-9 pe-5">
@@ -85,7 +85,7 @@ function renderRegisterPage() {
                             </div>
                             <hr class="mx-n3">
                             <div class="mx-5">
-                               <a href="" id="toConnexion">Déjà un compte ? Connectez-vous ici</a>
+                               <a href="" id="toConnexion"> Déjà un compte ? Connectez-vous ici</a>
                             </div>
    
                             </div>
