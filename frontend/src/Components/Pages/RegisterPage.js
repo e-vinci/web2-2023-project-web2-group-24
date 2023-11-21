@@ -105,7 +105,8 @@ function renderRegisterPage() {
     `
 
     const link = document.querySelector('#toConnexion');
-    link.addEventListener('click', () => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
             Navigate('/connexion');
     });
 };
