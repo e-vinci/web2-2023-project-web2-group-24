@@ -66,7 +66,8 @@ function renderLoginPage() {
     `
 
     const link = document.querySelector('#toInscription');
-link.addEventListener('click', () => {
+link.addEventListener('click', (e) => {
+    e.preventDefault();
     Navigate('/inscription')
 })
 }
