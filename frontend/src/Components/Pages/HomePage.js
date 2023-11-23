@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
 import Navigate  from '../Router/Navigate'
 
