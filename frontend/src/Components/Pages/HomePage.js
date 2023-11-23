@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
 
 const HomePage = () => {
@@ -16,7 +18,7 @@ function renderHomePage() {
 
   <div class="align-middle text-center" style="padding-top: 5%;" >
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-primary btn-lg">PLAY</button>
+      <button type="button" class="btn btn-primary btn-lg" id="buttonPlay">PLAY</button>
     </div>
     <div class="d-flex justify-content-center pt-5">
       <i class="bi bi-book"><a href="#Rulesdiv"> Règles du jeu </a></i>
@@ -38,6 +40,35 @@ function renderHomePage() {
   </div>
 </div>
   `;
+
+  /* anime({
+    targets: buttonPlay,
+    scale: 2,  // Double la taille du bouton
+    opacity: 0,  // Rend le bouton transparent
+    duration: 800,  // Durée de l'animation en millisecondes
+    easing: 'easeInOutQuad', */
+
+  const buttonPlay = document.querySelector('#buttonPlay');
+  const animation = anime({
+    targets: buttonPlay,
+    width: '10%', // -> from '28px' to '100%',
+    easing: 'easeInOutQuad',
+    direction: 'alternate',
+    loop: true,
+    autoplay: false
+  });
+
+  buttonPlay.addEventListener('mouseenter', () =>
+  animation.play());
+
+  buttonPlay.addEventListener('mouseleave', stopAnimation);
+
+  function stopAnimation() {
+    // animation.restart();
+    animation.pause();
+  }
 };
+
+ 
 
 export default HomePage;
