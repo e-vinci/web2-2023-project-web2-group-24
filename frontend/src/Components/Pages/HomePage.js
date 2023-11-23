@@ -1,8 +1,10 @@
 import { clearPage } from '../../utils/render';
+import Navigate  from '../Router/Navigate'
 
 const HomePage = () => {
   clearPage();
   renderHomePage();
+  attachMouseEventToPlay();
 };
 
 function renderHomePage() {
@@ -16,7 +18,7 @@ function renderHomePage() {
 
   <div class="align-middle text-center" style="padding-top: 5%;" >
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-primary btn-lg">PLAY</button>
+      <button type="button" class="btn btn-primary btn-lg"> <a href="" id="PlayClick" class="text-white fs-2">Jouer</a></button>
     </div>
     <div class="d-flex justify-content-center pt-5">
       <i class="bi bi-book"><a href="#Rulesdiv"> Règles du jeu </a></i>
@@ -38,6 +40,16 @@ function renderHomePage() {
   </div>
 </div>
   `;
+
+  
 };
+
+
+function attachMouseEventToPlay(){
+  const ButtonP = document.querySelector('#PlayClick');
+  ButtonP.addEventListener('click', ()=>{
+    Navigate('/setup')
+  });
+} 
 
 export default HomePage;
