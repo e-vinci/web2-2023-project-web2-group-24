@@ -42,9 +42,7 @@ function renderHomePage() {
   </div>
 </div>
   `;
-
-  
-};
+}
 
 
 function attachMouseEventToPlay(){
