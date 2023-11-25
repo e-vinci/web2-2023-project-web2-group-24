@@ -5,6 +5,7 @@ import { clearPage } from '../../utils/render';
 const HomePage = () => {
   clearPage();
   renderHomePage();
+  launchButtonPlayAnimation();
 };
 
 function renderHomePage() {
@@ -40,35 +41,27 @@ function renderHomePage() {
   </div>
 </div>
   `;
+}
 
-  /* anime({
-    targets: buttonPlay,
-    scale: 2,  // Double la taille du bouton
-    opacity: 0,  // Rend le bouton transparent
-    duration: 800,  // Durée de l'animation en millisecondes
-    easing: 'easeInOutQuad', */
-
+function launchButtonPlayAnimation() {
   const buttonPlay = document.querySelector('#buttonPlay');
   const animation = anime({
+    targets: buttonPlay,
+    scale: 2, // Double la taille du bouton
+    opacity: 0, // Rend le bouton transparent
+    duration: 800, // Durée de l'animation en millisecondes
+    easing: 'easeInOutQuad',
+    autoplay: false,
+  });
+  /* const animation = anime({
     targets: buttonPlay,
     width: '10%', // -> from '28px' to '100%',
     easing: 'easeInOutQuad',
     direction: 'alternate',
     loop: true,
     autoplay: false
-  });
-
-  buttonPlay.addEventListener('mouseenter', () =>
-  animation.play());
-
-  buttonPlay.addEventListener('mouseleave', stopAnimation);
-
-  function stopAnimation() {
-    // animation.restart();
-    animation.pause();
-  }
+  }); */
+  buttonPlay.addEventListener('click', () => animation.play());
 };
-
- 
 
 export default HomePage;
