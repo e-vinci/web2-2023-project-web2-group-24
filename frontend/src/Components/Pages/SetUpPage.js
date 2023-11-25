@@ -8,6 +8,7 @@ const SetUpPage = () => {
 function renderSetUpPage(){
   const main = document.querySelector('main');
   main.innerHTML=`
+  <div class="container-fluid d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 11%">
   <form>
     <div class="container overflow-hidden text-center">
         <div class="row row-cols-1 row-cols-md-2 g-4">
@@ -79,7 +80,7 @@ function renderSetUpPage(){
     </div>
   </div>
 </form>
- 
+</div>
 `
 }
 
