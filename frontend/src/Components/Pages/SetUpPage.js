@@ -1,4 +1,5 @@
 import { clearPage } from '../../utils/render';
+import Navigate from '../Router/Navigate';
 
 const SetUpPage = () => {
     clearPage();
@@ -10,9 +11,9 @@ const SetUpPage = () => {
 function renderSetUpPage(){
   const main = document.querySelector('main');
   main.innerHTML=`
-  <h1 class="text-center" style="padding-top: 4%">Configurez la partie</h1>
-  <form>
-    <div class="container overflow-hidden text-center " style="padding-top: 4%">
+  <h1 class="text-center" style="padding: 4% ">Configurez la partie</h1>
+  <form id="setUpForm">
+    <div class="container overflow-hidden text-center " style="padding-bottom: 50%">
         <div class="row row-cols-1 row-cols-md-2 g-4">
             <div class="col">
                 <div class="card">
@@ -80,13 +81,16 @@ function renderSetUpPage(){
             </div>
         </div>
         <div class="pt-4">
-            <button class="btn btn-primary " type="submit">COMMENCER LA PARTIE !</button> 
+            <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE!"> 
         </div>
     </div>
   </div>
 </form>
  
 `
+attachChangeEventToP3();
+attachChangeEventToP4();
+attachEventToSubmit();
 }
 
 function attachChangeEventToP3(){
@@ -118,6 +122,12 @@ function attachChangeEventToP4(){
         }
     })
 }
-
+function attachEventToSubmit(){
+    const form = document.querySelector('#setUpForm')
+    form.addEventListener('submit',(e) => {
+        e.preventDefault();
+        Navigate('/game');
+    })
+}
 
 export default SetUpPage;
