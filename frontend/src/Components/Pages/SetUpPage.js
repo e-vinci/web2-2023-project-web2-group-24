@@ -10,6 +10,9 @@ const SetUpPage = () => {
 function renderSetUpPage(){
   const main = document.querySelector('main');
   main.innerHTML=`
+
+  <div class="container-fluid d-flex justify-content-center" style="padding-top: 5%; padding-bottom: 11%">
+
   <h1 class="text-center" style="padding-top: 4%">Configurez la partie</h1>
   <form>
     <div class="container overflow-hidden text-center " style="padding-top: 4%">
@@ -85,7 +88,7 @@ function renderSetUpPage(){
     </div>
   </div>
 </form>
- 
+</div>
 `
 }
 

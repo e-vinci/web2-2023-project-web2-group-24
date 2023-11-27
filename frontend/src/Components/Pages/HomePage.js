@@ -1,10 +1,13 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
+import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
-import Navigate  from '../Router/Navigate'
+import Navigate from '../Router/Navigate';
+
 
 const HomePage = () => {
   clearPage();
   renderHomePage();
-  attachMouseEventToPlay();
+  launchButtonPlayAnimation();
 };
 
 function renderHomePage() {
@@ -18,7 +21,7 @@ function renderHomePage() {
 
   <div class="align-middle text-center" style="padding-top: 5%;" >
     <div class="d-flex justify-content-center">
-      <button type="button" class="btn btn-primary btn-lg"> <a href="" id="PlayClick" class="text-white fs-2">Jouer</a></button>
+      <button type="button" class="btn btn-primary btn-lg" id="buttonPlay">PLAY</button>
     </div>
     <div class="d-flex justify-content-center pt-5">
       <i class="bi bi-book"><a href="#Rulesdiv"> Règles du jeu </a></i>
@@ -40,16 +43,33 @@ function renderHomePage() {
   </div>
 </div>
   `;
+}
 
-  
+function launchButtonPlayAnimation() {
+  const buttonPlay = document.querySelector('#buttonPlay');
+  const animation = anime({
+    targets: buttonPlay,
+    scale: 25, // Double la taille du bouton
+    opacity: 0, // Rend le bouton transparent
+    duration: 600, // Durée de l'animation en millisecondes
+    easing: 'easeInOutQuad',
+    autoplay: false,
+  });
+  /* const animation = anime({
+    targets: buttonPlay,
+    width: '10%', // -> from '28px' to '100%',
+    easing: 'easeInOutQuad',
+    direction: 'alternate',
+    loop: true,
+    autoplay: false
+  }); */
+  buttonPlay.addEventListener('click', () => animation.play());
+
+  animation.complete = () => {
+    Navigate('/setup');
+  };
+
 };
 
-
-function attachMouseEventToPlay(){
-  const ButtonP = document.querySelector('#PlayClick');
-  ButtonP.addEventListener('click', ()=>{
-    Navigate('/setup')
-  });
-} 
 
 export default HomePage;
