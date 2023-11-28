@@ -1,4 +1,4 @@
-DROP SCHEMA IF EXISTS web2;
+DROP SCHEMA IF EXISTS web2 CASCADE ;
 CREATE SCHEMA web2;
 
 CREATE TABLE web2.utilisateurs(
@@ -36,3 +36,7 @@ CREATE TABLE web2.questions(
                                valeur BOOLEAN NOT NULL,
                                question VARCHAR(200) NOT NULL
 );
+
+INSERT INTO web2.categories (id_categorie, nom_categorie)
+ VALUES ('TES', 'test');
+insert into web2.utilisateurs(nom, prenom, email, mdp) VALUES ('qi', 'joachim', 'joachim.qi@student.vinci', 'kjqdskjqskl');
