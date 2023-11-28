@@ -1,7 +1,6 @@
-/* function readOneQuestion(category) {
-
+function readOneQuestion(category) {
 }
 
 module.exports = {
   readOneQuestion,
-}; */
+};
