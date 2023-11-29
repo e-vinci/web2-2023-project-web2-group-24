@@ -29,10 +29,15 @@ function renderHomePage() {
 
   <div class="container-fluid d-flex justify-content-center" id="Rulesdiv">
   <p class="text-center">
+    Bienvenue dans Trivial Vinci, le jeu de culture générale sur les études de la haute école Leonard De Vinci.
+    Le but du jeu est simple : </br>
     Être le premier joueur à remplir son camembert avec les 6 triangles marqueurs de couleur
     différente en répondant correctement aux questions.<br />
     Puis retourner au centre du plateau et répondre correctement à la question finale pour
-    remporter la partie !
+    remporter la partie !</br>
+    comment jouer ?</br>
+    Un partie se joue à jusqu'a 4 joueurs sur le même ordinateur lorsque votre tour arrive prenez la main sur l'ordinateur et lancez le dé puis répondez a la question.</br>
+    Si vous trouvez la bonne réponse, vous pouvez rejouer sinon c'est le tour du joueur suivant 
   </p>
   </div>
   <div class="container-fluid d-flex justify-content-center">
