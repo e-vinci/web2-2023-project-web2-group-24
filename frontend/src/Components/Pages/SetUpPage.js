@@ -86,7 +86,7 @@ function renderSetUpPage(){
     </div>
   </div>
 </form>
- 
+</div>
 `
 attachChangeEventToP3();
 attachChangeEventToP4();
