@@ -1,7 +1,7 @@
 function readAllStatisticsOfAnUser(user) {
 }
 
-function updateStatisticsOfAnUser(user) {
+function updateStatisticsOfAnUser(user, data) {
 }
 
 module.exports = {
