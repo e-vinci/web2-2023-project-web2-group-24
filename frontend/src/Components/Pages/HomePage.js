@@ -29,17 +29,21 @@ function renderHomePage() {
   </div>
 
   <div style="padding-top: 80%"></div>
+  <h2 class="text-center">Règles du jeu :</h2>
+  </br>
 
   <div class="container-fluid d-flex justify-content-center" id="Rulesdiv">
+  
+ 
   <p class="text-center">
-    Être le premier joueur à remplir son camembert avec les 6 triangles marqueurs de couleur
-    différente en répondant correctement aux questions.<br />
-    Puis retourner au centre du plateau et répondre correctement à la question finale pour
+    Soyez le premier joueur à remplir votre camembert avec les 6 triangles marqueurs de couleur
+    différentes en répondant correctement aux questions.<br>
+    Retournez au centre du plateau pour répondre correctement à une question finale et
     remporter la partie !
   </p>
   </div>
   <div class="container-fluid d-flex justify-content-center">
-  <button type="button" class="btn btn-secondary"><a href="#UpPage" class="text-white"> Retourner à la page du haut </a> </button>
+  <button type="button" class="btn btn-primary"><a href="#UpPage" class="text-white"> Retourner à la page du haut </a> </button>
   </div>
 </div>
   `;

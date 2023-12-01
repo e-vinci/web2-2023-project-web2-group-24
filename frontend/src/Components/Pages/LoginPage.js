@@ -10,7 +10,7 @@ const LoginPage = () => {
 function renderLoginPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
-    <section class="vh-100" style="background-color: #0095B6;">
+    <section class="vh-100 bg-primary" ;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9">
@@ -52,7 +52,7 @@ function renderLoginPage() {
                             </div>
 
                             <div class="px-5 py-4">
-                                <button type="submit" class="btn btn-dark btn-lg">Connexion</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Connexion</button>
                             </div>
                             
     
