@@ -6,6 +6,7 @@ const {
 
 const router = express.Router();
 
+// get all the categories
 router.get('/', (req, res) => {
   const categories = readAllCategories();
   res.json(categories);

@@ -17,8 +17,21 @@ router.get('/:id', (req, res) => {
 
 router.patch('/:id', (req, res) => {
   const nbQuestionsAsked = req?.body?.nbQuestionsAsked;
-  const nbGamePlayed = req?.body?.nbGamePlayed;
-  const nbGameWin = req?.body?.nbGameWin;
+  const gameWin = req?.body?.nbGameWin;
+  const favoriteCategory = req?.body?.favoriteCategory;
+
+  if (!req.body || (nbQuestionsAsked !== undefined && (typeof nbQuestionsAsked !== 'number' || nbQuestionsAsked <= 0)) || (gameWin !== undefined && typeof gameWin !== 'boolean') || (favoriteCategory !== undefined && (typeof favoriteCategory !== 'number' || favoriteCategory <= 0))) {
+    return res.sendStatus(400);
+  }
+
+  // eslint-disable-next-line max-len
+  const updateStatistics = updateStatisticsOfAnUser(req.params.id, { nbQuestionsAsked, gameWin, favoriteCategory });
+
+  if (updateStatistics === undefined) {
+    res.sendStatus(404);
+  }
+
+  return res.json(updateStatistics);
 });
 
 module.exports = router;
