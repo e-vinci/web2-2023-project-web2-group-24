@@ -3,6 +3,7 @@ import HomePage from '../Pages/HomePage';
 import LoginPage from '../Pages/LoginPage';
 import RegisterPage from '../Pages/RegisterPage';
 import SetUpPage from '../Pages/SetUpPage';
+import StatsPage from '../Pages/StatsPage';
 
 
 const routes = {
@@ -10,7 +11,8 @@ const routes = {
   '/game': GamePage,
   '/connexion' : LoginPage,
   '/setup': SetUpPage,
-  '/inscription' : RegisterPage
+  '/inscription' : RegisterPage,
+  '/stats' : StatsPage
 };
 
 export default routes;
