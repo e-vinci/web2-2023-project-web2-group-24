@@ -24,14 +24,14 @@ client.connect((err) => {
     return console.error('could not connect to postgres', err);
   }
   // eslint-disable-next-line no-shadow
-  client.query('SELECT * FROM web2.utilisateurs', (err, result) => {
+  /* client.query('SELECT * FROM web2.categories', (err, result) => {
     if (err) {
       return console.error('error running query', err);
     }
     console.log(result.rows[0]);
     // >> output: 2018-08-23T14:02:57.117Z
     client.end();
-  });
+  }); */
 });
 
 module.exports = client;

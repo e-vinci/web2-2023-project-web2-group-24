@@ -4,9 +4,10 @@ const {
   readOneQuestion,
 } = require('../models/questions');
 
-const {
+/* const {
   readAllCategories,
 } = require('../models/categories');
+*/
 
 const router = express.Router();
 
