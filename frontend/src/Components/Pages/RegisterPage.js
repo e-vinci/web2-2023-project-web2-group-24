@@ -115,4 +115,6 @@ function renderRegisterPage() {
 
 
 
+
+
 export default RegisterPage;
