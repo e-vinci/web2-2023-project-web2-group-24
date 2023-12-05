@@ -1,11 +1,11 @@
 import { clearPage } from '../../utils/render';
 
-const StatsPage = () => {
+const PersonnalStatsPage = () => {
     clearPage();
-    renderStatsPage();
+    renderPersonnalStatsPage();
 }
 
-function renderStatsPage(){
+function renderPersonnalStatsPage(){
   const main = document.querySelector('main');
   main.innerHTML=`
   <h1 class="text-center" style="padding: 4% ">Statistiques utilisateur</h1>
@@ -58,4 +58,4 @@ function renderStatsPage(){
 }
 
 
-export default StatsPage;
+export default PersonnalStatsPage;
