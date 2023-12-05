@@ -12,14 +12,13 @@ const {
 const router = express.Router();
 
 // get one question by category
-router.get('/', (req, res) => {
-  const category = req?.query?.category && typeof req.query.category === 'string' /* && (readAllCategories().contains(req.query.category)) */ ? req.query.categorie : undefined; // categorie ??
+router.get('/', async (req, res) => {
+  const category = req?.query?.category;
   if (!category) {
-    res.sendStatus(400);
+    return res.sendStatus(400);
   }
-
-  const question = readOneQuestion(category);
-  res.json(question);
+  const question = await readOneQuestion(category);
+  return res.json(question);
 });
 
 module.exports = router;
