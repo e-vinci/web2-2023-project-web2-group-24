@@ -1,16 +1,17 @@
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import renderPrivacyText from '../privacyAccord';
 
 const RegisterPage = () => {
     clearPage();
     renderRegisterPage();
-    
 };
 
 function renderRegisterPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
-    <section style="background-color: #0095B6;">
+    <div id="privacyPolicyWrapper"></div>
+    <section class="bg-primary">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9 mb-5">
@@ -91,7 +92,7 @@ function renderRegisterPage() {
                             </div>
                             <div class="card-body mx-3">Les champs marqués d'une * sont obligatoires </div>
                             <div class="px-5 py-4">
-                                <button type="submit" class="btn btn-dark btn-lg">Inscription</button>
+                                <button type="submit" class="btn btn-primary btn-lg">Inscription</button>
                             </div>
                             
     
@@ -109,6 +110,7 @@ function renderRegisterPage() {
         e.preventDefault();
             Navigate('/connexion');
     });
+    renderPrivacyText();
 };
 
 

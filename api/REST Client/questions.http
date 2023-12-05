@@ -1,1 +1,4 @@
 @baseUrl = http://localhost:3000
+
+### Try to get one question with category TES
+GET {{baseUrl}}/questions/?category=TES
