@@ -17,6 +17,7 @@ router.get('/', (req, res) => {
   if (!category) {
     res.sendStatus(400);
   }
+
   const question = readOneQuestion(category);
   res.json(question);
 });
