@@ -1,1 +1,7 @@
 @baseUrl = http://localhost:3000
+
+### Try to get categories
+GET {{baseUrl}}/categories/categories
+
+### Try to get one catergory by ID
+GET {{baseUrl}}/categories/?category=ENSE
