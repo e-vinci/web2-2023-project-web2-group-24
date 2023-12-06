@@ -1,1 +1,14 @@
 @baseUrl = http://localhost:3000
+
+### Try to get all the statistics of a player with id = 1
+GET {{baseUrl}}/statistics/1
+
+### Try to update the statistics of a player with id= 1
+PUT {{baseUrl}}/statistics/1
+Content-Type: application/json
+
+{
+    "nbQuestionsAsked": 112,
+    "nbGameWin": 10,
+    "favoriteCategory": "ENSE"
+}

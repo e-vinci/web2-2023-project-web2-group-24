@@ -19,4 +19,6 @@ const client = new pg.Client({
   password: process.env.DB_PASSWORD,
 });
 
+client.connect();
+
 module.exports = client;

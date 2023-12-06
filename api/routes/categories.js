@@ -7,25 +7,15 @@ const {
 const router = express.Router();
 
 // get all the categories
-router.get('/', (req, res) => {
-  const categories = readAllCategories();
-  res.json(categories);
-});
+router.get('/', async (req, res) => {
+  console.log('coucoiu');
+  const categories = await readAllCategories();
 
-router.get('/categories', async (req, res) => {
-  try {
-    // Effectuez une requête SQL pour obtenir toutes les catégories
-    const result = await pool.query('SELECT * FROM categories');
-
-    // Récupérez les résultats de la requête
-    const categories = result.rows;
-
-    // Répondez à la requête avec les catégories récupérées
-    res.json({ categories });
-  } catch (error) {
-    // En cas d'erreur, renvoyez une réponse d'erreur
-    res.status(500).json({ error: error.message });
+  if (!categories) {
+    return res.sendStatus(404);
   }
+
+  return res.json(categories);
 });
 
 module.exports = router;
