@@ -62,6 +62,8 @@ function renderLoginPage() {
                 </div>
             </div>
         </div>
+
+        
     </section>
     `
 

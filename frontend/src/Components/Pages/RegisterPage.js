@@ -1,15 +1,16 @@
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import renderPrivacyText from '../privacyAccord';
 
 const RegisterPage = () => {
     clearPage();
     renderRegisterPage();
-    
 };
 
 function renderRegisterPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
+    <div id="privacyPolicyWrapper"></div>
     <section class="bg-primary">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
@@ -109,6 +110,7 @@ function renderRegisterPage() {
         e.preventDefault();
             Navigate('/connexion');
     });
+    renderPrivacyText();
 };
 
 
