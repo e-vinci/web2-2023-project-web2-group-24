@@ -8,7 +8,6 @@ const router = express.Router();
 
 // get all the categories
 router.get('/', async (req, res) => {
-  console.log('coucoiu');
   const categories = await readAllCategories();
 
   if (!categories) {
