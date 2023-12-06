@@ -4,9 +4,10 @@ const { readAllStatisticsOfAnUser, updateStatisticsOfAnUser } = require('../mode
 
 const router = express.Router();
 
-router.get('/:id', (req, res) => {
+// route to get all the statistics of a player
+router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  const statistics = readAllStatisticsOfAnUser(id);
+  const statistics = await readAllStatisticsOfAnUser(id);
 
   if (statistics === null) {
     res.sendStatus(404);
@@ -15,17 +16,18 @@ router.get('/:id', (req, res) => {
   res.json(statistics);
 });
 
-router.patch('/:id', (req, res) => {
+// route to update all the statistics of a player
+router.put('/:id', async (req, res) => {
   const nbQuestionsAsked = req?.body?.nbQuestionsAsked;
-  const gameWin = req?.body?.nbGameWin;
+  const nbGameWin = req?.body?.nbGameWin;
   const favoriteCategory = req?.body?.favoriteCategory;
 
-  if (!req.body || (nbQuestionsAsked !== undefined && (typeof nbQuestionsAsked !== 'number' || nbQuestionsAsked <= 0)) || (gameWin !== undefined && typeof gameWin !== 'boolean') || (favoriteCategory !== undefined && (typeof favoriteCategory !== 'number' || favoriteCategory <= 0))) {
+  if (!req.body || !nbQuestionsAsked || !nbGameWin || !favoriteCategory || typeof nbQuestionsAsked !== 'number' || nbQuestionsAsked <= 0 || typeof nbGameWin !== 'number' || nbGameWin < 0 || typeof favoriteCategory !== 'string') {
     return res.sendStatus(400);
   }
 
   // eslint-disable-next-line max-len
-  const updateStatistics = updateStatisticsOfAnUser(req.params.id, { nbQuestionsAsked, gameWin, favoriteCategory });
+  const updateStatistics = await updateStatisticsOfAnUser(req.params.id, { nbQuestionsAsked, nbGameWin, favoriteCategory });
 
   if (updateStatistics === undefined) {
     res.sendStatus(404);

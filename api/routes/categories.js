@@ -14,9 +14,15 @@ router.get('/', async (req, res) => {
 });
 
 // get all the categories
-router.get('/categories', async (req, res) => {
-  const question = await readAllCategories();
-  return res.json(question);
+router.get('/', async (req, res) => {
+  console.log('coucoiu');
+  const categories = await readAllCategories();
+
+  if (!categories) {
+    return res.sendStatus(404);
+  }
+
+  return res.json(categories);
 });
 
 module.exports = router;
