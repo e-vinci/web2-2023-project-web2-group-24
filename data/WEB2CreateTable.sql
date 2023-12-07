@@ -27,7 +27,7 @@ CREATE TABLE web2.statistiques(
                                       CHECK ( statistiques.nb_parties_jouees >= 0 ),
                                   nb_victoire INTEGER DEFAULT 0 NOT NULL
                                       CHECK ( statistiques.nb_victoire >=0 ),
-                                  categorie_preferee CHAR(3) REFERENCES web2.categories(id_categorie) NOT NULL
+                                  categorie_preferee CHAR(4) REFERENCES web2.categories(id_categorie) NOT NULL
 );
 
 CREATE TABLE web2.questions(
