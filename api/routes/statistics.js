@@ -7,6 +7,7 @@ const router = express.Router();
 // route to get all the statistics of a player
 router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id, 10);
+  console.log('hi');
   const statistics = await readAllStatisticsOfAnUser(id);
 
   console.log(statistics);
