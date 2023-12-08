@@ -28,9 +28,11 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@cubejs-client/core": "^0.31.0",
     "@popperjs/core": "^2.9.2",
     "animejs": "^3.2.1",
     "bootstrap": "^5.0.1",
+    "chart.js": "^4.4.1",
     "clean-webpack-plugin": "^4.0.0",
     "gh-pages": "^4.0.0",
     "pg": "^8.11.3",
