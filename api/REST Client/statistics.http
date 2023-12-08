@@ -3,12 +3,35 @@
 ### Try to get all the statistics of a player with id = 1
 GET {{baseUrl}}/statistics/1
 
+### Try to get all the statistics of an inexistant player
+GET {{baseUrl}}/statistics/2
+
 ### Try to update the statistics of a player with id= 1
 PUT {{baseUrl}}/statistics/1
 Content-Type: application/json
 
 {
     "nbQuestionsAsked": 112,
-    "nbGameWin": 10,
+    "gameWin": true,
+    "favoriteCategory": "ENSE"
+}
+
+### Try to update the statistics of an inexistant player
+PUT {{baseUrl}}/statistics/2
+Content-Type: application/json
+
+{
+    "nbQuestionsAsked": 112,
+    "gameWin": true,
+    "favoriteCategory": "ENSE"
+}
+
+### Try to update the statistics of player 1 but with a wrong statistic
+PUT {{baseUrl}}/statistics/2
+Content-Type: application/json
+
+{
+    "nbQuestionsAsked": 112,
+    "gameWin": 2,
     "favoriteCategory": "ENSE"
 }
