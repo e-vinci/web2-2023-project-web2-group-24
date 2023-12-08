@@ -40,9 +40,9 @@ CREATE TABLE web2.questions(
 
 
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFO', 'INFORMATIQUE');
-INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('DIET', 'DIETETIQUE');
-INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFI', 'INFIRMIER');
-INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('EDPH', 'EDUCATION PHYSIQUE');
+--INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('DIET', 'DIETETIQUE');
+--INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFI', 'INFIRMIER');
+INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('COSP', 'COACHING SPORTIF');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('IMGM', 'IMAGERIE MEDICALE');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('ENSE', 'ENSEIGNANT');
 
@@ -58,6 +58,39 @@ INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cet
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, il n''y a que deux stages en BAC3' , FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, durant le BAC2 il y a un mois de stage où 80% de l''horaire d''une classe est pris en charge par un étudiant',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, il n''y pas de cours de musique et d''art plastique. Ces cours sont réservés uniquement aux cursus d''instituteur maternelle',FALSE);
+
+
+
+
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le terme « bug » en informatique vient d''insectes qui faisaient griller les lampes des premiers ordinateurs', TRUE );
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','En programmation une chaine de charactères (un texte) est appelée « String »', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le software est l''ensemble des éléments matériels d''un système informatique', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le langage assembleur est un langage de programmation de haut niveau.', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','1 Gigaoctet est égal à 1000 Megaoctet.', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','On trouve des systèmes d''exploitation dans les avions', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le premier ordinateur pesait 50 tonnes', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le nombre 3 s''écrit 0100 en binaire', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le langage de programmation le plus populaire en 2023 est Python', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le langage de requêtes SQL est principalement utiliser pour manipuler des bases de données relationnelles.', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','A la Haute École, le cours d’APOO signifie « Analyse et programmation orienté ordonnanceur »', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le langage de programmation Java doit son nom au café que beaucoup de développeurs apprécient ', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','La Commission nationale de l''informatique et des libertés (CNIL) a condamné l''entreprise Google à payer deux amendes d''un montant total de 100 millions d''euros pour non-respect des règles RGPD', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Les polices d’écriture sans-serif facilitent la lecture aux mal-voyants', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Les requêtes post servent à envoyer des données au serveur', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le format fichier PNG est principalement utilisé pour des fichiers audio compressés', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Un email génère environ 4g de CO2', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','La consommation de vidéos en streaming génère 300 millions de tonnes de CO2 par an ', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','TDD signifie To Do Documentation', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Un framework est un schéma des différentes pages d’un site web ', FALSE);
+
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'La radiographie est une modalité d’imagerie qui utilise des ondes sonores pour créer des images du corps humain', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Les rayons x sont utilisés dans une tomographie par ordinateur', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une IRM est une modalité d’imagerie utilisant un champ magnétiqque  et des ondes radio pour créer des images détaillées du corps', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Les rayons ultraviolets sont utilisés dans la spectroscopie par résonance magnétique ', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'On utilise les Rayons gamma pour détecter la radioactivité du corps.', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'L’Angiographie est utilisée pour détecter les vaisseaux sanguins', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une échographie est souvent utilisée pour l’évaluation du métabolisme cellulaire', FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une radiographie est particulièrement utile pour détecter les fractures osseuses', TRUE);
 
 
 /*
