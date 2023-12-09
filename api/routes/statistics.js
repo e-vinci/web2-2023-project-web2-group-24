@@ -9,7 +9,7 @@ router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id, 10);
   const statistics = await readAllStatisticsOfAnUser(id);
 
-  if (statistics.length === 0) {
+  if (!statistics) {
     return res.sendStatus(404);
   }
 
@@ -30,7 +30,7 @@ router.put('/:id', async (req, res) => {
   // eslint-disable-next-line max-len
   const updateStatistics = await updateStatisticsOfAnUser(id, { nbQuestionsAsked, gameWin, favoriteCategory });
 
-  if (updateStatistics.length === 0) {
+  if (!updateStatistics) {
     return res.sendStatus(404);
   }
 
