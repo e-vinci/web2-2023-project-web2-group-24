@@ -1,4 +1,5 @@
 const express = require('express');
+const { authorize } = require('../utils/auths');
 
 const {
   readOneQuestion,
@@ -11,7 +12,7 @@ const {
 const router = express.Router();
 
 // get one question by category
-router.get('/', async (req, res) => {
+router.get('/', authorize, async (req, res) => {
   const categories = await readAllCategories();
   // eslint-disable-next-line max-len
   const category = req?.query?.category && categories.findIndex((c) => c.id_categorie === req.query.category) !== -1 ? req.query.category : undefined;

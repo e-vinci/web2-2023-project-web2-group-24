@@ -1,11 +1,12 @@
 const express = require('express');
+const { authorize } = require('../utils/auths');
 
 const { readAllStatisticsOfAnUser, updateStatisticsOfAnUser } = require('../models/statistics');
 
 const router = express.Router();
 
 // route to get all the statistics of a player
-router.get('/:id', async (req, res) => {
+router.get('/:id', authorize, async (req, res) => {
   const id = parseInt(req.params.id, 10);
   const statistics = await readAllStatisticsOfAnUser(id);
 
@@ -17,7 +18,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // route to update all the statistics of a player
-router.put('/:id', async (req, res) => {
+router.put('/:id', authorize, async (req, res) => {
   const id = parseInt(req.params.id, 10);
   const nbQuestionsAsked = req?.body?.nbQuestionsAsked;
   const gameWin = req?.body?.gameWin;

@@ -15,24 +15,25 @@ Content-Type: application/json
 
 {
     "username":"admin",
-    "password":"admin"
+    "password":"05012004"
 }
 
 
-### Create the manager user
+### Create the user Joachim
 POST {{baseUrl}}/auths/register
 Content-Type: application/json
 
 {
-    "username":"manager",
-    "password":"manager"
+    "username":"Joachim",
+    "email":"joachim.qi@gmail.com",
+    "password":"1234"
 }
 
-### Login the manager user
+### Login the user Joachim
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"manager",
-    "password":"manager"
+    "username":"Joachim",
+    "password":"4321"
 }

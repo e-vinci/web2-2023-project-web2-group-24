@@ -13,4 +13,8 @@ const client = new pg.Client({
 
 client.connect();
 
+process.on('exit', () => {
+  client.end();
+});
+
 module.exports = client;
