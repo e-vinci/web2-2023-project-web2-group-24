@@ -40,9 +40,9 @@ CREATE TABLE web2.questions(
 
 
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFO', 'INFORMATIQUE');
---INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('DIET', 'DIETETIQUE');
---INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFI', 'INFIRMIER');
-INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('COSP', 'COACHING SPORTIF');
+INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('DIET', 'DIETETIQUE');
+INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFI', 'INFIRMIER');
+INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('EDPH', 'EDUCATION PHYSIQUE');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('IMGM', 'IMAGERIE MEDICALE');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('ENSE', 'ENSEIGNANT');
 
@@ -58,9 +58,6 @@ INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cet
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, il n''y a que deux stages en BAC3' , FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, durant le BAC2 il y a un mois de stage où 80% de l''horaire d''une classe est pris en charge par un étudiant',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, il n''y pas de cours de musique et d''art plastique. Ces cours sont réservés uniquement aux cursus d''instituteur maternelle',FALSE);
-
-
-
 
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','Le terme « bug » en informatique vient d''insectes qui faisaient griller les lampes des premiers ordinateurs', TRUE );
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('INFO','En programmation une chaine de charactères (un texte) est appelée « String »', TRUE);
@@ -91,8 +88,6 @@ INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'On util
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'L’Angiographie est utilisée pour détecter les vaisseaux sanguins', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une échographie est souvent utilisée pour l’évaluation du métabolisme cellulaire', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une radiographie est particulièrement utile pour détecter les fractures osseuses', TRUE);
-
-
 /*
 CREATE OR REPLACE FUNCTION web2.ajout_utilisateur() RETURN VOID AS $$
 DECLARE
@@ -129,5 +124,5 @@ BEGIN
     END IF;
     END;
 $$ LANGUAGE plpgsql;
-
 */
+

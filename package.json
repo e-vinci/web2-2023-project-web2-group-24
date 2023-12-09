@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "animejs": "^3.2.2",
     "dotenv": "^16.3.1",
     "pg": "^8.11.3"
   },

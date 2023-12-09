@@ -52,7 +52,7 @@ const renderPrivacyText = () => {
                 <p>Effective Date: September 29, 2023</p>
                 </div>
                 <div class="modal-footer">
-                    <button id="okBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">I have read</button>
+                    <button id="okBtn" type="button" class="btn btn-secondary" data-bs-dismiss="modal">I have read and I accept conditions</button>
                 </div>
             </div>
         </div>
