@@ -1,18 +1,8 @@
 const client = require('../elephantsql');
 
 async function readAllStatisticsOfAnUser(user) {
-  // eslint-disable-next-line max-len
-  // const result = await client.query('SELECT s.* FROM web2.statistiques s WHERE s.utilisateur = $1', [user]);
-  // return result.rows;
-
-  await client.query('SELECT s.* FROM web2.statistiques s WHERE s.utilisateur = $1', [user], (err, result) => {
-    if (err) {
-      console.error('Error executing query:', err);
-      return undefined; // Ou une autre valeur par défaut que vous préférez
-    }
-    console.log('Query result:', result.rows);
-    return result.rows;
-  });
+  const result = await client.query('SELECT s.* FROM web2.statistiques s WHERE s.utilisateur = $1', [user]);
+  return result.rows;
 }
 
 async function updateStatisticsOfAnUser(user, data) {

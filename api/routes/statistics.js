@@ -7,11 +7,9 @@ const router = express.Router();
 // route to get all the statistics of a player
 router.get('/:id', async (req, res) => {
   const id = parseInt(req.params.id, 10);
-  console.log('hi');
   const statistics = await readAllStatisticsOfAnUser(id);
 
-  console.log(statistics);
-  if (statistics === undefined) {
+  if (statistics.length === 0) {
     return res.sendStatus(404);
   }
 
@@ -20,6 +18,7 @@ router.get('/:id', async (req, res) => {
 
 // route to update all the statistics of a player
 router.put('/:id', async (req, res) => {
+  const id = parseInt(req.params.id, 10);
   const nbQuestionsAsked = req?.body?.nbQuestionsAsked;
   const gameWin = req?.body?.gameWin;
   const favoriteCategory = req?.body?.favoriteCategory;
@@ -29,10 +28,10 @@ router.put('/:id', async (req, res) => {
   }
 
   // eslint-disable-next-line max-len
-  const updateStatistics = await updateStatisticsOfAnUser(req.params.id, { nbQuestionsAsked, gameWin, favoriteCategory });
+  const updateStatistics = await updateStatisticsOfAnUser(id, { nbQuestionsAsked, gameWin, favoriteCategory });
 
-  if (updateStatistics === undefined) {
-    res.sendStatus(404);
+  if (updateStatistics.length === 0) {
+    return res.sendStatus(404);
   }
 
   return res.json(updateStatistics);
