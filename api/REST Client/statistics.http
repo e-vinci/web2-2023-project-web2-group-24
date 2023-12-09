@@ -1,0 +1,52 @@
+@baseUrl = http://localhost:3000
+
+### Login the user Joachim
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"Joachim",
+    "password":"4321"
+}
+
+### Try to get all the statistics of a player with id = 1
+GET {{baseUrl}}/statistics/1
+Authorization: {{admin.response.body.token}}
+
+### Try to get all the statistics of an inexistant player
+GET {{baseUrl}}/statistics/2
+Authorization: {{admin.response.body.token}}
+
+### Try to update the statistics of a player with id= 1
+PUT {{baseUrl}}/statistics/1
+Content-Type: application/json
+Authorization: {{admin.response.body.token}}
+
+{
+    "nbQuestionsAsked": 112,
+    "gameWin": true,
+    "favoriteCategory": "ENSE"
+}
+
+### Try to update the statistics of an inexistant player
+PUT {{baseUrl}}/statistics/2
+Content-Type: application/json
+Authorization: {{admin.response.body.token}}
+
+{
+    "nbQuestionsAsked": 112,
+    "gameWin": true,
+    "favoriteCategory": "ENSE"
+}
+
+### Try to update the statistics of player 1 but with a wrong statistic
+PUT {{baseUrl}}/statistics/2
+Content-Type: application/json
+Authorization: {{admin.response.body.token}}
+
+{
+    "nbQuestionsAsked": 112,
+    "gameWin": 2,
+    "favoriteCategory": "ENSE"
+}

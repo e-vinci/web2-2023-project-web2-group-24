@@ -1,0 +1,19 @@
+@baseUrl = http://localhost:3000
+
+### Login the user Joachim
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username":"Joachim",
+    "password":"4321"
+}
+
+### Try to get one random question with category ENSE
+GET {{baseUrl}}/questions/?category=ENSE
+Authorization: {{admin.response.body.token}}
+
+### Try to get one random question with an inexistant category
+GET {{baseUrl}}/questions/?category=BASKETBALL
+Authorization: {{admin.response.body.token}}
