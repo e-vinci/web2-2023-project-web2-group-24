@@ -21,22 +21,11 @@ function renderRegisterPage() {
                     <div class="card" style="border-radius: 15px;">
                     
                         <div class="card-body">
-                        <div class="row align-items-center pt-4 pb-3">
-                                <div class="col-md-3 ps-5">
     
-                                    <h6 class="mb-0">Nom*</h6>
-    
-                                </div>
-                                <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" />
-                                </div>
-                            </div>
-    
-                            <hr class="mx-n3">
                             <div class="row align-items-center pt-4 pb-3">
                                 <div class="col-md-3 ps-5">
     
-                                    <h6 class="mb-0">Prénom*</h6>
+                                    <h6 class="mb-0">Nom d'utilisateur*</h6>
     
                                 </div>
                                 <div class="col-md-9 pe-5">
@@ -108,7 +97,7 @@ function renderRegisterPage() {
     const link = document.querySelector('#toConnexion');
     link.addEventListener('click', (e) => {
         e.preventDefault();
-            Navigate('/connexion');
+        Navigate('/connexion');
     });
     renderPrivacyText();
 };

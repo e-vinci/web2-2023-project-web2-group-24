@@ -60,7 +60,7 @@ function launchButtonPlayAnimation() {
     targets: buttonPlay,
     scale: 25, // Double la taille du bouton
     opacity: 0, // Rend le bouton transparent
-    duration: 600, // Durée de l'animation en millisecondes
+    duration: 400, // Durée de l'animation en millisecondes
     easing: 'easeInOutQuad',
     autoplay: false,
   });
