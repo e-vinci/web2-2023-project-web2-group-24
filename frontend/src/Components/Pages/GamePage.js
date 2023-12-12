@@ -2,7 +2,7 @@
 // import Chart from 'chart.js/auto';
 
 import { clearPage } from '../../utils/render';
-import game from '../../models/game.js'
+// import game from '../../models/game.js'
 
 
 
