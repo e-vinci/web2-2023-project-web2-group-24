@@ -2,7 +2,6 @@
 import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
-import { getAuthenticatedUser } from '../../utils/auths';
 
 
 const HomePage = () => {
@@ -12,8 +11,6 @@ const HomePage = () => {
 };
 
 function renderHomePage() {
-  const user = getAuthenticatedUser();
-  console.log(user);
   const main = document.querySelector('main');
   main.innerHTML = `<div class="mt-2 pb-5">
   <div class="container-fluid d-flex justify-content-center" style="padding-top: 5%;">
