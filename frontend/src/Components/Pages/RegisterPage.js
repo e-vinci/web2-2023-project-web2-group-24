@@ -1,13 +1,14 @@
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import renderPrivacyText from '../privacyAccord';
+import register from '../../models/user';
 
-const RegisterPage = () => {
+const RegisterPage = async () => {
     clearPage();
-    renderRegisterPage();
+    await renderRegisterPage();
 };
 
-function renderRegisterPage() {
+async function renderRegisterPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
     <div id="privacyPolicyWrapper"></div>
@@ -29,7 +30,7 @@ function renderRegisterPage() {
     
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" />
+                                <input type="text" class="form-control form-control-lg" id="usernameInput" />
                                 </div>
                             </div>
     
@@ -42,7 +43,7 @@ function renderRegisterPage() {
     
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" />
+                                <input type="text" class="form-control form-control-lg" id="emailInput" />
                                 </div>
                             </div>
     
@@ -56,7 +57,7 @@ function renderRegisterPage() {
                                 </div>
                                 <div class="col-md-9 pe-5">
     
-                                    <input type="password" class="form-control form-control-lg"/>
+                                    <input type="password" class="form-control form-control-lg" id="passwordInput"/>
     
                                 </div>
                             </div>
@@ -81,10 +82,8 @@ function renderRegisterPage() {
                             </div>
                             <div class="card-body mx-3">Les champs marqués d'une * sont obligatoires </div>
                             <div class="px-5 py-4">
-                                <button type="submit" class="btn btn-primary btn-lg">Inscription</button>
+                                <input type="submit" class="btn btn-primary btn-lg" id="submit" value="Inscription"/>
                             </div>
-                            
-    
                         </div>
                     </div>
     
@@ -92,11 +91,35 @@ function renderRegisterPage() {
             </div>
         </div>
     </section>
-    `
+    `;
 
-    const link = document.querySelector('#toConnexion');
-    link.addEventListener('click', (e) => {
+    const toConnexionButton = document.querySelector('#toConnexion');
+    toConnexionButton.addEventListener('click', (e) => {
         e.preventDefault();
+        Navigate('/connexion');
+    });
+
+    const submitButton = document.querySelector('#submit');
+    console.log(submitButton);
+    submitButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const username = document.querySelector('#usernameInput').value;
+        const email = document.querySelector('#emailInput').value;
+        const password = document.querySelector('#passwordInput').value;
+
+        const options = {
+            method: 'POST',
+            body: JSON.stringify({
+              username,
+              email,
+              password,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          };
+
+        await register(options);
         Navigate('/connexion');
     });
     renderPrivacyText();
