@@ -1,6 +1,7 @@
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
-import game from '../../models/game.js'
+// import game from '../../models/game.js'
+import getOneQuestion from '../../models/question';
 
 const GamePage = async () => {
     clearPage();
@@ -11,8 +12,8 @@ function renderQuestion(){
   const question = document.querySelector('#questionWrapper');
   question.innerHTML=`
   <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
-    <div class = "card-header fs-1 p-4">
-      Question sur : [CATEGORIE]
+    <div class = "card-header fs-1 p-4" >
+    <p id="categorie"></p>
     </div>
     <div class = "card-body p-5">
       <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
@@ -22,7 +23,9 @@ function renderQuestion(){
       </div>
     </div>           
   </div>
-  ` 
+
+  `
+  renderAQuestion() 
 }
 function renderGamePage(){
   const main = document.querySelector('main');
@@ -59,10 +62,19 @@ function renderGamePage(){
         </div>
     </div>
     ` 
+    players()
 }
 function players(){
     const player1Name = document.querySelector("#player1Name");
-    player1Name.innerHTML = 
+    player1Name.innerHTML = `HEllo`
 
+}
+
+async function renderAQuestion(){
+  const cat = document.querySelector('#categorie');
+
+  const q = await getOneQuestion('INFO');
+  console.log(q.question)
+  cat.innerHTML = `.............`
 }
  export default GamePage;

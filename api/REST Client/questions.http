@@ -6,8 +6,8 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"Joachim",
-    "password":"4321"
+    "username":"Robin",
+    "password":"1234"
 }
 
 ### Try to get one random question with category ENSE
