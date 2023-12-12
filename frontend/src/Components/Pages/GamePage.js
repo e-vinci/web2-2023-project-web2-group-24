@@ -1,5 +1,6 @@
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
+import game from '../../models/game.js'
 
 const GamePage = async () => {
     clearPage();
@@ -27,16 +28,41 @@ function renderGamePage(){
   const main = document.querySelector('main');
     main.innerHTML =`
     <div class="container" id="questionWrapper" style: "z-index: 10"></div>
-    <div class="position relative">
-        <div class="position-absolute top-0 start-0">
-            <div class="card">
+    <div class="position relative p-5">
+        <div class="position-absolute top-0 start-0 mt-5">
+            <div class="card mt-4">
                 <div class = "card-body bg-info">
-                    <h5 class="card-title">Joueur 1 </h5>
+                    <h5 id="player1Name" class="card-title">Joueur 1 </h5>
+                </div>
+            </div>
+        </div>
+        <div class="position-absolute top-0 end-0 mt-5">
+            <div class="card mt-4">
+                <div class = "card-body bg-success">
+                    <h5 id="player2Name" class="card-title">Joueur 2 </h5>
+                </div>
+            </div>
+        </div>
+        <div id="player3Card" class="position-absolute bottom-0 start-0">
+            <div class="card">
+                <div class = "card-body bg-danger">
+                    <h5 id="player3Name" class="card-title">Joueur 3 </h5>
+                </div>
+            </div>
+        </div>
+        <div id="player4Card" class="position-absolute bottom-0 end-0">
+            <div class="card mt-4">
+                <div class = "card-body bg-warning">
+                    <h5 id="player4Name" class="card-title">Joueur 4 </h5>
                 </div>
             </div>
         </div>
     </div>
-    `
-    
+    ` 
+}
+function players(){
+    const player1Name = document.querySelector("#player1Name");
+    player1Name.innerHTML = 
+
 }
  export default GamePage;
