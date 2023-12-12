@@ -1,7 +1,7 @@
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import { setAuthenticatedUser } from "../../utils/auths";
-import {login} from '../../models/user';
+import { login } from '../../models/user';
 
 const LoginPage = () => {
     clearPage();
