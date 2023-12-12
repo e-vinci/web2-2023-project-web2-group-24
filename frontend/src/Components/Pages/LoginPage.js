@@ -79,6 +79,7 @@ form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd').value;
+   
     const options = {
         method: 'POST',
         body: JSON.stringify({
