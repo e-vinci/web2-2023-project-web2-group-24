@@ -2,13 +2,14 @@ import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import { setAuthenticatedUser } from "../../utils/auths";
 import { login } from '../../models/user';
+import Navbar from '../Navbar/Navbar';
 
-const LoginPage = () => {
+const LoginPage = async () => {
     clearPage();
-    renderLoginPage();
+    await renderLoginPage();
 };
 
-function renderLoginPage() {
+async function renderLoginPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
     <section class="vh-100 bg-primary" ;">
@@ -77,6 +78,7 @@ link.addEventListener('click', (e) => {
 const form = document.querySelector('form');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd').value;
    
@@ -103,8 +105,10 @@ form.addEventListener('submit', async (e) => {
     }
 
     setAuthenticatedUser(user);
-    Navigate('/')
-})
+    Navbar();
+    Navigate('/');
+});
+
 }
 
 
