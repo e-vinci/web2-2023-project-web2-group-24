@@ -15,9 +15,9 @@ const PersonnalStatsPage = async () => {
 async function renderPersonalStatsPage(){
   const main = document.querySelector('main');
   main.innerHTML=`  
-  <span id="username"></span>
+  <h1 class="text-center" style="padding: 4% " id="username"></h1>
+
   <div class='container'>
-  
   <div class="d-flex justify-content-center pt-5">
   <div class="card border-primary mb-3 w-50 d-flex" ">
   <div class="card-body text-primary">
@@ -31,17 +31,17 @@ async function renderPersonalStatsPage(){
   
   <tr>
   <th scope="row">Nombre de parties jouées</th>
-  <td>Larry</td>
+  <td id = "nb_parties"></td>
   
   </tr>
   <tr>
   <th scope="row">Nombre de victoires</th>
-  <td>Larry</td>
+  <td id = "nb_victoires"></td>
   
   </tr>
   <tr>
   <th scope="row">Catégorie préférée</th>
-  <td>Larry</td>
+  <td id = "categorie"></td>
   
   </tr>
   </tbody>
@@ -57,7 +57,12 @@ async function renderPersonalStatsPage(){
 }
 
 async function renderStats() {
-  const span = document.querySelector('#username');
+  const username = document.querySelector('#username');
+  const tdNbQuestion = document.querySelector('#nb_questions');
+  const tdNbParties = document.querySelector('#nb_parties');
+  const tdNbVictoires = document.querySelector('#nb_victoires');
+  const tdCategorie = document.querySelector('#categorie');
+
   const user = getAuthenticatedUser();
   const options = {
     headers: {
@@ -65,8 +70,13 @@ async function renderStats() {
     },
 }
   const stats = await getAllStatistics(1, options);
-  console.log(stats);
-  span.innerHTML = `<h1 class="text-center" style="padding: 4% ">Statistiques de : ${stats.nom_utilisateur}</h1>`;  
+  username.innerHTML = `Statistiques de ${stats.nom_utilisateur}`
+  tdNbQuestion.innerHTML = `${stats.nb_questions_posees} questions posées` 
+  tdNbParties.innerHTML = `${stats.nb_parties_jouees} parties jouées` 
+  tdNbVictoires.innerHTML = `${stats.nb_victoire} parties remportées`
+  tdCategorie.innerHTML = `${stats.nom_categorie}`
+
 }
+
 
 export default PersonnalStatsPage;
