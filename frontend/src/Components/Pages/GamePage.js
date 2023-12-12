@@ -1,17 +1,11 @@
-<<<<<<< HEAD
-
-=======
 // import Navigate from '../Router/Navigate';
 import { clearPage } from '../../utils/render';
->>>>>>> 7a16de50cd5f0c2a3249302a217f6fd14e80582c
 
 const GamePage = async () => {
     clearPage();
     renderGamePage();
     renderQuestion();
   };
-export default GamePage;
-
 function renderQuestion(){
   const question = document.querySelector('#questionWrapper');
   question.innerHTML=`
@@ -32,5 +26,17 @@ function renderQuestion(){
 function renderGamePage(){
   const main = document.querySelector('main');
     main.innerHTML =`
-    <div class="container" id="questionWrapper" style: "z-index: 10"></div>`
+    <div class="container" id="questionWrapper" style: "z-index: 10"></div>
+    <div class="position relative">
+        <div class="position-absolute top-0 start-0">
+            <div class="card">
+                <div class = "card-body bg-info">
+                    <h5 class="card-title">Joueur 1 </h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    `
+    
 }
+ export default GamePage;
