@@ -5,7 +5,7 @@ async function getAllStatistics(id) {
     const statistics = await response.json();
     return statistics;
   } catch (err) {
-    console.error('getAllPizzas::error: ', err);
+    console.error('getAllStatistics::error: ', err);
     throw err;
   }
 }
