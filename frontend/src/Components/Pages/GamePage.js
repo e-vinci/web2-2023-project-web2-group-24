@@ -15,11 +15,9 @@ function renderGamePage(){
     const main = document.querySelector('main');
     main.innerHTML = `
     
-    <div style = "text-align:center;">
+    <div class="mb-5" style = "text-align:center;">
         <canvas id="canvas" width="500" height="500"></canvas>
-    </div>
-    <div style="text-align:center;">   
-        <input type="button" value="spin" style="float:left;" id='spin' />
+        <input type="button" value="spin" style="float:center;" id='spin' />
     </div>
 
     `
@@ -29,7 +27,7 @@ function renderGamePage(){
 function renderWheel(){
     const options = ["info", "pharma", "diétique", "random", "idk", "prout"];
 
-    const colors = ["red", "green", "black", "yellow", "blue", "purple"]
+    const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
     let startAngle = 0;
     const arc = Math.PI / (options.length / 2);
@@ -113,7 +111,7 @@ function renderWheel(){
       const spinAngle = spinAngleStart - easeOut(spinTime, 0, spinAngleStart, spinTimeTotal);
       startAngle += (spinAngle * Math.PI / 180);
       drawRouletteWheel();
-      spinTimeout = setTimeout(rotateWheel(), 30);
+      spinTimeout = setTimeout(rotateWheel, 30);
     }
     
     
@@ -139,42 +137,5 @@ function renderWheel(){
     drawRouletteWheel();
 }
 
-/* function addEventListener(){
-    Chart.defaults.plugins.legend.display = false;
-    const ctx = document.getElementById("myChart").getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['1','2','3','4','5','6','7','8','9','10','11','12'],
-            datasets: [{
-                data: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-                backgroundColor: [
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white',
-                    'white'
-                ],
-                borderColor: 'black',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false, // Set this to false to adjust chart size freely
-            aspectRatio: 1, // Set the aspect ratio (width:height), adjust as needed
-        }
-   });
-    myChart.data.datasets[0].backgroundColor[5] = 'red'
-    myChart.update();
-};
-*/
 
 export default GamePage;        
