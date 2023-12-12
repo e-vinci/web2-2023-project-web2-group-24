@@ -29,7 +29,7 @@ function renderLoginPage() {
     
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" id="username"/>
+                                <input type="text" class="form-control form-control-lg" id="username" required/>
                                 </div>
                             </div>
     
@@ -43,7 +43,7 @@ function renderLoginPage() {
                                 </div>
                                 <div class="col-md-9 pe-5">
     
-                                    <input type="password" id="pwd" class="form-control form-control-lg"/>
+                                    <input type="password" id="pwd" class="form-control form-control-lg" required/>
     
                                 </div>
                             </div>
@@ -80,6 +80,7 @@ submit.addEventListener('click', async (e) => {
     e.preventDefault();
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd').value;
+   
     const options = {
         method: 'POST',
         body: JSON.stringify({
