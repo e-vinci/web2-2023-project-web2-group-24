@@ -1,5 +1,7 @@
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import { setAuthenticatedUser } from "../../utils/auths";
+import login from '../../models/user';
 
 const LoginPage = () => {
     clearPage();
@@ -27,7 +29,7 @@ function renderLoginPage() {
     
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" />
+                                <input type="text" class="form-control form-control-lg" id="username"/>
                                 </div>
                             </div>
     
@@ -41,7 +43,7 @@ function renderLoginPage() {
                                 </div>
                                 <div class="col-md-9 pe-5">
     
-                                    <input type="password" class="form-control form-control-lg"/>
+                                    <input type="password" id="pwd" class="form-control form-control-lg"/>
     
                                 </div>
                             </div>
@@ -52,7 +54,7 @@ function renderLoginPage() {
                             </div>
 
                             <div class="px-5 py-4">
-                                <button type="submit" class="btn btn-primary btn-lg">Connexion</button>
+                                <button type="submit" class="btn btn-primary btn-lg" id="connect">Connexion</button>
                             </div>
                             
     
@@ -67,10 +69,30 @@ function renderLoginPage() {
     </section>
     `
 
-    const link = document.querySelector('#toInscription');
+const link = document.querySelector('#toInscription');
 link.addEventListener('click', (e) => {
     e.preventDefault();
     Navigate('/inscription')
+})
+
+const submit = document.querySelector('#connect');
+submit.addEventListener('click', async (e) => {
+    e.preventDefault();
+    const username = document.querySelector('#username').value;
+    const password = document.querySelector('#pwd').value;
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({
+            username, 
+            password,
+        }),
+        headers: {
+            'Content-Type':'application/json'
+        },
+    }
+    const user = await login(options);
+    setAuthenticatedUser(user);
+    Navigate('/')
 })
 }
 

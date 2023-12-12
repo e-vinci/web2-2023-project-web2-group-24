@@ -1,10 +1,15 @@
 import { clearPage } from '../../utils/render';
 import { getAllStatistics } from '../../models/statistic';
+import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import Navigate from '../Router/Navigate';
 
 const PersonnalStatsPage = async () => {
+  if (!isAuthenticated){
+      Navigate('/connexion')
+  }
   clearPage();
   await renderPersonalStatsPage();   
-  await renderStats(); 
+   
 }
 
 async function renderPersonalStatsPage(){
@@ -46,17 +51,22 @@ async function renderPersonalStatsPage(){
   </div>
   </div>
   </div>
-  
-  
   </div>
-  
   `
+  await renderStats();
 }
 
 async function renderStats() {
   const span = document.querySelector('#username');
-  const stats = await getAllStatistics(1);  
-  span.innerHTML = `<h1 class="text-center" style="padding: 4% ">Statistiques de : ${stats.utilisateur}</h1>`;  
+  const user = getAuthenticatedUser();
+  const options = {
+    headers: {
+        'Authorization': user.token
+    },
+}
+  const stats = await getAllStatistics(1, options);
+  console.log(stats);
+  span.innerHTML = `<h1 class="text-center" style="padding: 4% ">Statistiques de : ${stats.nom_utilisateur}</h1>`;  
 }
 
 export default PersonnalStatsPage;
