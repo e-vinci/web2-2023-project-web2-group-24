@@ -6,7 +6,6 @@ import { login } from '../../models/user';
 const LoginPage = () => {
     clearPage();
     renderLoginPage();
-    
 };
 
 function renderLoginPage() {
@@ -19,7 +18,7 @@ function renderLoginPage() {
     
                 <h1 class="text-white mb-4 mt-3">Connexion</h1>
     
-                    <div class="card" style="border-radius: 15px;">
+                    <form class="card" style="border-radius: 15px;">
                         <div class="card-body">
     
                             <div class="row align-items-center pt-4 pb-3">
@@ -29,7 +28,7 @@ function renderLoginPage() {
     
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" id="username"/>
+                                <input type="text" class="form-control form-control-lg" id="username" required>
                                 </div>
                             </div>
     
@@ -43,7 +42,7 @@ function renderLoginPage() {
                                 </div>
                                 <div class="col-md-9 pe-5">
     
-                                    <input type="password" id="pwd" class="form-control form-control-lg"/>
+                                    <input type="password" id="pwd" class="form-control form-control-lg" required>
     
                                 </div>
                             </div>
@@ -59,7 +58,7 @@ function renderLoginPage() {
                             
     
                         </div>
-                    </div>
+                    </form>
     
                 </div>
             </div>
@@ -75,8 +74,8 @@ link.addEventListener('click', (e) => {
     Navigate('/inscription')
 })
 
-const submit = document.querySelector('#connect');
-submit.addEventListener('click', async (e) => {
+const form = document.querySelector('form');
+form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd').value;
@@ -91,6 +90,17 @@ submit.addEventListener('click', async (e) => {
         },
     }
     const user = await login(options);
+    if(user === null){
+        form.innerHTML += `<div class="row d-flex justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+                <div class="bg-danger text-white text-center p-3 rounded">
+                    <p>Cet utilisateur n'existe pas !</p>
+                </div>
+            </div>
+        </div>`;
+        return;
+    }
+
     setAuthenticatedUser(user);
     Navigate('/')
 })
