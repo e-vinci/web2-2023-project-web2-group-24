@@ -14,8 +14,8 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"05012004"
+    "username":"Bob",
+    "password":"1234"
 }
 
 
@@ -34,6 +34,6 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"Joachim",
-    "password":"4321"
+    "username":"Bob",
+    "password":"1234"
 }

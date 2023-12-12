@@ -1,11 +1,12 @@
-async function getAllStatistics(id) {
+async function getAllStatistics(id, options) {
   try {
-    const response = await fetch(`http://localhost:3000/statistics/${id}`);
+    console.log(`stats of ${id}`);
+    const response = await fetch(`http://localhost:3000/statistics/${id}`, options);
     if (!response.ok) return '';
     const statistics = await response.json();
     return statistics;
   } catch (err) {
-    console.error('getAllPizzas::error: ', err);
+    console.error('getAllStatistics::error: ', err);
     throw err;
   }
 }
