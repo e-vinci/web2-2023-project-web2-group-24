@@ -1,3 +1,4 @@
+import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import addPlayer from '../../models/game';
@@ -11,12 +12,12 @@ const SetUpPage = () => {
 };
 
 function renderSetUpPage() {
-    if (isAuthenticated()) {
-      setUpPageWithAuthenticatedUser();
-    } else {
-      setUpPage();
-    }
+  if (isAuthenticated()) {
+    setUpPageWithAuthenticatedUser();
+  } else {
+    setUpPage();
   }
+}
 
 function setUpPage() {
   const main = document.querySelector('main');
@@ -100,7 +101,7 @@ function setUpPage() {
   attachChangeEventToP3();
   attachChangeEventToP4();
   attachEventToSubmit();
-};
+}
 
 function setUpPageWithAuthenticatedUser() {
   const authenticatedUser = getAuthenticatedUser();
@@ -176,7 +177,8 @@ function setUpPageWithAuthenticatedUser() {
               </div>
           </div>
           <div class="pt-4">
-              <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE!"> 
+              <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE!">
+              <p id="progressText"></p>
           </div>
       </div>
     </div>
@@ -186,8 +188,7 @@ function setUpPageWithAuthenticatedUser() {
   attachChangeEventToP3();
   attachChangeEventToP4();
   attachEventToSubmit();
-};
-
+}
 
 function attachChangeEventToP3() {
   const check = document.querySelector('#checkboxP3');
@@ -270,8 +271,41 @@ function attachEventToSubmit() {
     }
     addPlayer(player1);
     addPlayer(player2);
-    Navigate('/game');
+    animationButtonStart();
   });
+}
+
+function animationButtonStart() {
+  const progressLogEl = document.querySelector('#progressText');
+  const promiseEl = document.querySelector('#startGame');
+  // const demoPromiseResetTimeout;
+
+  function logFinished() {
+    anime.set(promiseEl, { backgroundColor: '#18FF92' });
+  }
+
+  const animation = anime
+    .timeline({
+      targets: promiseEl,
+      delay: 400,
+      duration: 500,
+      endDelay: 400,
+      easing: 'easeInOutSine',
+      autoplay: false,
+      update(anim) {
+        progressLogEl.innerHTML = `progress : ${Math.round(anim.progress)}%`;
+      },
+    })
+    .add({
+      translateX: 0,
+    });
+
+  animation.play();
+  animation.finished.then(logFinished);
+
+  animation.complete = () => {
+    Navigate('/game');
+  };
 }
 
 export default SetUpPage;
