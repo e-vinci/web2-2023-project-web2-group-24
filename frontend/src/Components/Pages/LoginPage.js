@@ -12,14 +12,14 @@ const LoginPage = async () => {
 async function renderLoginPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
-    <section class="vh-100 bg-primary" ;">
+    <section class="vh-100" ;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9">
     
-                <h1 class="text-white mb-4 mt-3">Connexion</h1>
+                <h1 class="text-primary text-decoration-underline mb-4 mt-3">Connexion</h1>
     
-                    <form class="card" style="border-radius: 15px;">
+                    <form class="card text-dark  border-primary bg-white mb-3" style="border-radius: 15px;">
                         <div class="card-body">
     
                             <div class="row align-items-center pt-4 pb-3">
