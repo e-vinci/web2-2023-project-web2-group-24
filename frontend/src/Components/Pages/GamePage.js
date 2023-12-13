@@ -1,10 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 // import Chart from 'chart.js/auto';
-
 import { clearPage } from '../../utils/render';
-
-
-
 
 const GamePage = () => {
     clearPage();
