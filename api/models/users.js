@@ -21,6 +21,7 @@ async function login(username, password) {
   );
 
   const authenticatedUser = {
+    id: userFound.no_utilisateur,
     username,
     token,
   };
@@ -54,7 +55,8 @@ async function readOneUserFromUsername(username, email) {
 
 async function createOneUser(username, password, email) {
   const hashedPassword = await bcrypt.hash(password, saltRounds);
-  await client.query('INSERT INTO web2.utilisateurs(nom_utilisateur, email, mdp) VALUES ($1, $2, $3) RETURNING *', [username, email, hashedPassword]);
+  const newUser = await client.query('INSERT INTO web2.utilisateurs(nom_utilisateur, email, mdp) VALUES ($1, $2, $3) RETURNING *', [username, email, hashedPassword]);
+  await client.query("INSERT INTO web2.statistiques(utilisateur, nb_questions_posees, nb_parties_jouees, nb_victoire, categorie_preferee) VALUES ($1, 0, 0, 0, 'INFO')", [newUser.rows[0].no_utilisateur]);
 }
 
 module.exports = {

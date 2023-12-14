@@ -92,7 +92,8 @@ function setUpPage() {
             </div>
         </div>
         <div class="pt-4">
-            <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE!"> 
+            <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE!">
+            <p id="progressText"></p>
         </div>
     </div>
   </div>
@@ -218,7 +219,8 @@ function attachChangeEventToP4() {
       t.value = '';
     }
   });
-}
+};
+
 function attachEventToSubmit() {
   const form = document.querySelector('#setUpForm');
 
@@ -278,20 +280,14 @@ function attachEventToSubmit() {
 function animationButtonStart() {
   const progressLogEl = document.querySelector('#progressText');
   const promiseEl = document.querySelector('#startGame');
-  // const demoPromiseResetTimeout;
-
-  function logFinished() {
-    anime.set(promiseEl, { backgroundColor: '#18FF92' });
-  }
 
   const animation = anime
     .timeline({
       targets: promiseEl,
       delay: 400,
-      duration: 500,
+      duration: 600,
       endDelay: 400,
       easing: 'easeInOutSine',
-      autoplay: false,
       update(anim) {
         progressLogEl.innerHTML = `progress : ${Math.round(anim.progress)}%`;
       },
@@ -301,7 +297,6 @@ function animationButtonStart() {
     });
 
   animation.play();
-  animation.finished.then(logFinished);
 
   animation.complete = () => {
     Navigate('/game');
