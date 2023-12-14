@@ -238,6 +238,7 @@ function attachEventToSubmit() {
       answerDIE: 0,
       answerINF: 0,
     };
+    addPlayer(player1);
     const player2 = {
       name: name2,
       answerBIN: 0,
@@ -246,7 +247,7 @@ function attachEventToSubmit() {
       answerDIE: 0,
       answerINF: 0,
     };
-
+    addPlayer(player2);
     if (check3.checked) {
       const name3 = document.querySelector('#inputPseudo3');
       const player3 = {
@@ -271,8 +272,8 @@ function attachEventToSubmit() {
       };
       addPlayer(player4);
     }
-    addPlayer(player1);
-    addPlayer(player2);
+    
+    
     animationButtonStart();
   });
 }
