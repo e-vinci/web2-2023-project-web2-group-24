@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-
 import { clearPage } from '../../utils/render';
 import { getPlayers } from '../../models/game';
 
@@ -15,7 +13,9 @@ function renderGamePage(){
         <div class="container" id="questionWrapper" style: "z-index: 10"></div>
         <div class="mb-5" style = "text-align:center;">
             <canvas id="canvas" width="500" height="500"></canvas>
-            <input type="button" value="spin" style="float:center;" id='spin' />
+            <div>
+              <input type="button" class = "btn btn-primary btn-lg value="spin" style="float:center;" id='spin' />
+            </div>
         </div>
         <div class="position relative p-5">
             <div class="position-absolute top-0 start-0 mt-5">
@@ -47,9 +47,6 @@ function renderGamePage(){
                 </div>
             </div>
         </div>
-         
-        renderWheel();
-    }
     ` 
     players()
     renderWheel()
@@ -219,4 +216,4 @@ function players(){
 }
 
 
-export default GamePage;   
+export default GamePage;  
