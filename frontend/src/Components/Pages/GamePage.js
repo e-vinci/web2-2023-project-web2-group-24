@@ -3,10 +3,11 @@
 import { clearPage } from '../../utils/render';
 import { getPlayers } from '../../models/game';
 
+
 const GamePage = async () => {
   clearPage();
   renderGamePage();
-  renderQuestion();
+  
 };
 
 function renderGamePage(){ 
@@ -58,7 +59,7 @@ function renderGamePage(){
 
 
 function renderWheel(){
-    const options = ["info", "pharma", "diététique", "random", "idk", "prout"];
+    const options = ['INFO', 'DIET', "INFI", 'EDPH', 'IMGM', 'ENSE'];
 
     const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
@@ -73,7 +74,12 @@ function renderWheel(){
 
     
     document.getElementById("spin").addEventListener("click", spin);
-    
+    document.getElementById("spin").addEventListener("click", () => {
+      spin();
+      setTimeout(renderQuestion('INFO'), 5000); 
+        
+    });
+
     function drawRouletteWheel() {
       const canvas = document.getElementById("canvas");
       if (canvas.getContext) {
@@ -157,7 +163,6 @@ function renderWheel(){
       ctx.save();
       ctx.font = 'bold 30px Helvetica, Arial';
       const text = options[index]
-      renderQuestion(text);
       ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
       ctx.restore();
     }
@@ -188,10 +193,9 @@ function renderQuestion(){
       
     </div>           
   </div>
-
   `
- 
 }
+
 
 
 function players(){
@@ -220,4 +224,4 @@ function players(){
 }
 
 
-export default GamePage;   
+export {GamePage, players} ;   

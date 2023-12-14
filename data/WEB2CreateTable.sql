@@ -32,7 +32,7 @@ CREATE TABLE web2.statistiques(
 
 CREATE TABLE web2.questions(
                                no_question SERIAL PRIMARY KEY NOT NULL,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     CHAR(4) REFERENCES web2.categories(id_categorie) NOT NULL ,
+                               categorie CHAR(4) REFERENCES web2.categories(id_categorie) NOT NULL ,
                                question VARCHAR(200) NOT NULL,
                                valeur BOOLEAN NOT NULL
 );
