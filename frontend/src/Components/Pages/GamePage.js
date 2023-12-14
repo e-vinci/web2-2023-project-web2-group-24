@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 import { clearPage } from '../../utils/render';
-
+import { getPlayers } from '../../models/game';
 
 const GamePage = async () => {
   clearPage();
@@ -58,7 +58,7 @@ function renderGamePage(){
 
 
 function renderWheel(){
-    const options = ["info", "pharma", "diÃ©tique", "random", "idk", "prout"];
+    const options = ["info", "pharma", "diététique", "random", "idk", "prout"];
 
     const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
@@ -196,9 +196,27 @@ function renderQuestion(){
 
 function players(){
     const player1Name = document.querySelector("#player1Name");
-    player1Name.innerHTML = 'Hello'
-
+    const name = getPlayers(1);
+    player1Name.innerHTML = name
+    const player2Name = document.querySelector("#player2Name");
+    const name2 = getPlayers(2);
+    player2Name.innerHTML = name2
+    const player3Name = document.querySelector("#player3Name");
+    const name3 = getPlayers(3);
+    if (name3 === undefined){
+      player3Name.innerHTML = "Joueur 3"
+    }else{
+      player3Name.innerHTML = name3
+    }
+  
+    const player4Name = document.querySelector("#player4Name");
+    const name4 = getPlayers(4);
+    if (name4 === undefined){
+      player4Name.innerHTML = "Joueur 4"
+    }else{
+    player4Name.innerHTML = name4
+    }
 }
 
 
-export default GamePage; 
+export default GamePage;   
