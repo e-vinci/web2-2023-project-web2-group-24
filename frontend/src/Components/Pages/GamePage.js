@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-// import Chart from 'chart.js/auto';
+
 import { clearPage } from '../../utils/render';
+
+
+
 
 const GamePage = () => {
     clearPage();
@@ -21,7 +24,7 @@ function renderGamePage(){
 }
 
 function renderWheel(){
-    const options = ["info", "pharma", "diétique", "random", "idk", "prout"];
+    const options = ["info", "pharma", "diÃ©tique", "random", "idk", "prout"];
 
     const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
@@ -33,6 +36,7 @@ function renderWheel(){
     let spinTimeTotal = 0;
     
     let ctx;
+
     
     document.getElementById("spin").addEventListener("click", spin);
     
@@ -134,4 +138,4 @@ function renderWheel(){
 }
 
 
-export default GamePage;        
+export default GamePage; 
