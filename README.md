@@ -7,8 +7,8 @@
 
 ## API
 - Votre API doit respecter les conventions REST et appliquer le boilerplate offert dans le cadre du cours de Web2.
-- Veuillez documenter les opérations de votre API, soit à l'aide de tableaux, comme vus dans le cours, soit à l'aide d'outils (Swagger par exemple). Votre fichier `README.md` doit indiquer l'endroit où se situe la documentation de votre API.
-- Les tests de votre API, les requêtes HTTP, doivent être données au sein de votre projet. Votre fichier `README.md` doit indiquer où se trouve ces fichiers. Pour chaque opération de votre API, il doit exister au minimum une requête HTTP associée.
+- Veuillez documenter les opérations de votre API, soit à l'aide de tableaux, comme vus dans le cours, soit à l'aide d'outils (Swagger par exemple). Votre fichier `README.md` doit indiquer l'endroit où se situe la documentation de votre API.  --> Rapport word projet groupe 24
+- Les tests de votre API, les requêtes HTTP, doivent être données au sein de votre projet. Votre fichier `README.md` doit indiquer où se trouve ces fichiers. Pour chaque opération de votre API, il doit exister au minimum une requête HTTP associée.   --> répertoire  ./api/REST Client
 - La RESTful API ne peut pas être uniquement un « copier/coller » de ressources offertes dans le cours (notamment les ressources **users** et **auths**). Vous pouvez utiliser les ressources offertes dans le cours, mais vous devez y apporter des ajouts significatifs.
 - Votre RESTful API doit mettre en œuvre au minimum un package non vu en cours.
 - Votre API doit respecter les droits d’auteurs, que ça soit pour les éventuelles librairies utilisées, les morceaux de code, les sons, images, vidéos… Cela est de votre responsabilité et non pas de celle de vos enseignants.

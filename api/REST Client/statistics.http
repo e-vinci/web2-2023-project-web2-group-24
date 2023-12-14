@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 
-### Login the user Joachim
+### Login the admin Robin
 # @name admin
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
@@ -15,7 +15,7 @@ GET {{baseUrl}}/statistics/1
 Authorization: {{admin.response.body.token}}
 
 ### Try to get all the statistics of an inexistant player
-GET {{baseUrl}}/statistics/2
+GET {{baseUrl}}/statistics/4
 Authorization: {{admin.response.body.token}}
 
 ### Try to update the statistics of a player with id= 1
@@ -30,7 +30,7 @@ Authorization: {{admin.response.body.token}}
 }
 
 ### Try to update the statistics of an inexistant player
-PUT {{baseUrl}}/statistics/2
+PUT {{baseUrl}}/statistics/4
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}
 
