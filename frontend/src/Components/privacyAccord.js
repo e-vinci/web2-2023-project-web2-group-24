@@ -65,7 +65,7 @@ const renderPrivacyText = () => {
   // save the user's choice in local storage
   const myModal = document.querySelector('#privacyPolicyModal');
   myModal.addEventListener('hidden.bs.modal', () => {
-    console.log('modal closed');
+          ;
   });
 
   const buttonAgree = document.querySelector('#okBtn');
