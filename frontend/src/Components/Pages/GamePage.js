@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-
 import { clearPage } from '../../utils/render';
 import { getPlayers } from '../../models/game';
 
@@ -9,41 +7,15 @@ const GamePage = async () => {
   renderQuestion();
 };
 
-function renderQuestion(){
-  const question = document.querySelector('#questionWrapper');
-  question.innerHTML=`
-  <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
-    <div class = "card-header fs-1 p-4" >
-    <p id="categorie"></p>
-    </div>
-    <div class = "card-body p-5">
-      <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
-      <div>
-        <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
-        <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
-      </div>
-    </div>           
-  </div>
-
-  `
-  renderAQuestion() 
-}
-
-async function renderAQuestion() {
-  const cat = document.querySelector('#categorie');
-  const q =  await getOneQuestion('ENSE');
-  cat.innerHTML = q.category;
-
-}
-function renderGamePage(){
+function renderGamePage(){ 
   const main = document.querySelector('main');
     main.innerHTML =`
-        <div class="container" id="questionWrapper" style: "z-index: 7"></div>
+        <div class="container" id="questionWrapper" style: "z-index: 10"></div>
         <div class="mb-5" style = "text-align:center;">
             <canvas id="canvas" width="500" height="500"></canvas>
             <div>
-              <input type="button" class="btn btn-primary btn-lg" value="spin" style="float:center;" id='spin' />
-            <div>
+              <input type="button" class = "btn btn-primary btn-lg value="spin" style="float:center;" id='spin' />
+            </div>
         </div>
         <div class="position relative p-5">
             <div class="position-absolute top-0 start-0 mt-5">
@@ -76,7 +48,7 @@ function renderGamePage(){
             </div>
         </div>
     ` 
-
+    players()
     renderWheel()
 }
 
@@ -244,4 +216,4 @@ function players(){
 }
 
 
-export default GamePage;   
+export default GamePage;  
