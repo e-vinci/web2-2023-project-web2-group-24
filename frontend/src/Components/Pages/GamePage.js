@@ -2,6 +2,7 @@
 
 import { clearPage } from '../../utils/render';
 import { getPlayers } from '../../models/game';
+import Navigate from '../Router/Navigate';
 
 
 const GamePage = async () => {
@@ -73,10 +74,12 @@ function renderWheel(){
     let ctx;
 
     
-    document.getElementById("spin").addEventListener("click", spin);
+    // document.getElementById("spin").addEventListener("click", spin);
     document.getElementById("spin").addEventListener("click", () => {
       spin();
-      setTimeout(renderQuestion('INFO'), 5000); 
+      setTimeout(() => {
+        Navigate('/question')
+      }, 5000); 
         
     });
 
@@ -178,7 +181,7 @@ function renderWheel(){
 }
 
 
-
+/*
 function renderQuestion(){
   const question = document.querySelector('#questionWrapper');
   question.innerHTML=`
@@ -195,7 +198,7 @@ function renderQuestion(){
   </div>
   `
 }
-
+*/
 
 
 function players(){
