@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 import { clearPage } from '../../utils/render';
-import { getPlayer } from '../../models/game'
+// import { getPlayer } from '../../models/game'
+import getOneQuestion from '../../models/question';
 
 
 const GamePage = async () => {
@@ -11,6 +12,40 @@ const GamePage = async () => {
 };
 
 function renderGamePage(){ 
+
+
+const GamePage = () => {
+    clearPage();
+    renderGamePage();
+    renderQuestion();
+  };
+function renderQuestion(){
+  const question = document.querySelector('#questionWrapper');
+  question.innerHTML=`
+  <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
+    <div class = "card-header fs-1 p-4" >
+    <p id="categorie"></p>
+    </div>
+    <div class = "card-body p-5">
+      <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
+      <div>
+        <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
+        <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
+      </div>
+    </div>           
+  </div>
+
+  `
+  renderAQuestion() 
+}
+
+async function renderAQuestion() {
+  const cat = document.querySelector('#categorie');
+  const q =  await getOneQuestion('ENSE');
+  cat.innerHTML = q.category;
+
+}
+function renderGamePage(){
   const main = document.querySelector('main');
     main.innerHTML =`
         <div class="container" id="questionWrapper" style: "z-index: 7"></div>
