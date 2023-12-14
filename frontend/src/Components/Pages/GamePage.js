@@ -5,15 +5,20 @@ import getOneQuestion from '../../models/question';
 
 const GamePage = async () => {
   clearPage();
-  
   renderGamePage();
- 
   renderQuestion();
 };
 
 function renderGamePage(){
   const main = document.querySelector('main');
     main.innerHTML =`
+
+    <div class="mb-5" style = "text-align:center;">
+    <canvas id="canvas" width="500" height="500"></canvas>
+    <input type="button" value="spin" style="float:center;" id='spin' />
+</div>
+<input type="button" value="spin" style="float:center;" id='spin' />
+
     <div class="container" id="questionWrapper" style: "z-index: 10"></div>
     <div class="position relative p-5">
         <div class="position-absolute top-0 start-0 mt-5">
@@ -46,21 +51,12 @@ function renderGamePage(){
         </div>
     </div>
     ` 
-  renderRoulette();
+
     players()
+    renderWheel()
 }
 
-function renderRoulette(){
-  const main = document.querySelector('main');
-  main.innerHTML =`
-  
-  <div class="mb-5" style = "text-align:center;">
-      <canvas id="canvas" width="500" height="500"></canvas>
-      <input type="button" value="spin" style="float:center;" id='spin' />
-  </div>
-<input type="button" value="spin" style="float:center;" id='spin' />`
-renderWheel();
-}
+
 
 function renderWheel(){
     const options = ["info", "pharma", "diÃ©tique", "random", "idk", "prout"];
@@ -205,7 +201,7 @@ function renderQuestion(){
 
 function players(){
     const player1Name = document.querySelector("#player1Name");
-    player1Name.innerHTML = `HEllo`
+    player1Name.innerHTML = 'Hello'
 
 }
 
@@ -213,7 +209,6 @@ async function renderAQuestion(){
   const cat = document.querySelector('#categorie');
 
   const q = await getOneQuestion('INFO');
-  console.log(q.question)
-  cat.innerHTML = `.............`
+  cat.innerHTML = `${q.category}`
 }
 export default GamePage; 
