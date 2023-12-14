@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 import { clearPage } from '../../utils/render';
-import getOneQuestion from '../../models/question';
+
 
 const GamePage = async () => {
   clearPage();
@@ -190,7 +190,7 @@ function renderQuestion(){
   </div>
 
   `
-  renderAQuestion() 
+ 
 }
 
 
@@ -200,10 +200,5 @@ function players(){
 
 }
 
-async function renderAQuestion(){
-  const cat = document.querySelector('#categorie');
 
-  const q = await getOneQuestion('INFO'); 
-  cat.innerHTML = `YO`
-}
 export default GamePage; 
