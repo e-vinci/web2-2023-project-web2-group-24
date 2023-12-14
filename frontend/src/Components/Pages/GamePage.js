@@ -201,9 +201,10 @@ function players(){
     const player2Name = document.querySelector("#player2Name");
     const name2 = getPlayers(2);
     player2Name.innerHTML = name2
+    
     const player3Name = document.querySelector("#player3Name");
     const name3 = getPlayers(3);
-    if (name3 === undefined){
+    if (!name){
       player3Name.innerHTML = "Joueur 3"
     }else{
       player3Name.innerHTML = name3
@@ -211,7 +212,7 @@ function players(){
   
     const player4Name = document.querySelector("#player4Name");
     const name4 = getPlayers(4);
-    if (name4 === undefined){
+    if (!name4){
       player4Name.innerHTML = "Joueur 4"
     }else{
     player4Name.innerHTML = name4
