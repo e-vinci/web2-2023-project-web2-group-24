@@ -1,7 +1,7 @@
 import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
-import addPlayer from '../../models/game';
+import {addPlayer} from '../../models/game';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 
 const SetUpPage = () => {
@@ -226,8 +226,8 @@ function attachEventToSubmit() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name1 = document.querySelector('#inputPseudo1');
-    const name2 = document.querySelector('#inputpseudo2');
+    const name1 = document.querySelector('#inputPseudo1').value;
+    const name2 = document.querySelector('#inputPseudo2').value;
     const check3 = document.querySelector('#checkboxP3');
     const check4 = document.querySelector('#checkboxP4');
     const player1 = {
@@ -238,18 +238,19 @@ function attachEventToSubmit() {
       answerDIE: 0,
       answerINF: 0,
     };
-    addPlayer(player1);
+    addPlayer(JSON.stringify(player1));
+    
     const player2 = {
       name: name2,
       answerBIN: 0,
-      answerCOS: 0,
+      answerCOA: 0,
       answerBIM: 0,
       answerDIE: 0,
       answerINF: 0,
     };
-    addPlayer(player2);
+    addPlayer(JSON.stringify(player2));
     if (check3.checked) {
-      const name3 = document.querySelector('#inputPseudo3');
+      const name3 = document.querySelector('#inputPseudo3').value;
       const player3 = {
         name: name3,
         answerBIN: 0,
@@ -258,10 +259,10 @@ function attachEventToSubmit() {
         answerDIE: 0,
         answerINF: 0,
       };
-      addPlayer(player3);
+      addPlayer(JSON.stringify(player3));
     }
     if (check4.checked) {
-      const name4 = document.querySelector('#inputPseudo4');
+      const name4 = document.querySelector('#inputPseudo4').value;
       const player4 = {
         name: name4,
         answerBIN: 0,
@@ -270,7 +271,7 @@ function attachEventToSubmit() {
         answerDIE: 0,
         answerINF: 0,
       };
-      addPlayer(player4);
+      addPlayer(JSON.stringify(player4));
     }
     
     

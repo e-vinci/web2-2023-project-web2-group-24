@@ -1,9 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 import { clearPage } from '../../utils/render';
-// import { getPlayer } from '../../models/game'
-import getOneQuestion from '../../models/question';
-
+import { getPlayers } from '../../models/game';
 
 const GamePage = async () => {
   clearPage();
@@ -85,7 +83,7 @@ function renderGamePage(){
 
 
 function renderWheel(){
-    const options = ["info", "pharma", "diÃ©tique", "random", "idk", "prout"];
+    const options = ["info", "pharma", "diététique", "random", "idk", "prout"];
 
     const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
@@ -201,4 +199,49 @@ function renderWheel(){
 
 
 
-export default GamePage; 
+function renderQuestion(){
+  const question = document.querySelector('#questionWrapper');
+  question.innerHTML=`
+  <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
+    <div class = "card-header fs-1 p-4" >
+    <p id="categorie"></p>
+    </div>
+    <div class = "card-body p-5">
+      <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
+        <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
+        <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
+      
+    </div>           
+  </div>
+
+  `
+ 
+}
+
+
+function players(){
+    const player1Name = document.querySelector("#player1Name");
+    const name = getPlayers(1);
+    player1Name.innerHTML = name
+    const player2Name = document.querySelector("#player2Name");
+    const name2 = getPlayers(2);
+    player2Name.innerHTML = name2
+    const player3Name = document.querySelector("#player3Name");
+    const name3 = getPlayers(3);
+    if (name3 === undefined){
+      player3Name.innerHTML = "Joueur 3"
+    }else{
+      player3Name.innerHTML = name3
+    }
+  
+    const player4Name = document.querySelector("#player4Name");
+    const name4 = getPlayers(4);
+    if (name4 === undefined){
+      player4Name.innerHTML = "Joueur 4"
+    }else{
+    player4Name.innerHTML = name4
+    }
+}
+
+
+export default GamePage;   

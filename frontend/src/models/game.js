@@ -1,7 +1,14 @@
 const game = [];
 
-const addPlayer = (player) => game.push(player);
+function addPlayer(player) {
+    console.log(`YOOOOOOOOOOO ${  player}`);
+    game.push(player);
+}
+function getPlayers(noPlayer) {
+    console.log(game);
+    const player = JSON.parse(game[noPlayer - 1]);
+    console.log(player.name);
+    return player.name;
+}
 
-const getPlayer = (index) => game[index];
-
-export {addPlayer, getPlayer}
+export { addPlayer, getPlayers }
