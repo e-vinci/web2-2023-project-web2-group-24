@@ -2,11 +2,13 @@
 
 import { clearPage } from '../../utils/render';
 import { getPlayers } from '../../models/game';
+import Navigate from '../Router/Navigate';
+
 
 const GamePage = async () => {
   clearPage();
   renderGamePage();
-  renderQuestion();
+  
 };
 
 function renderGamePage(){ 
@@ -58,7 +60,7 @@ function renderGamePage(){
 
 
 function renderWheel(){
-    const options = ["info", "pharma", "diététique", "random", "idk", "prout"];
+    const options = ['INFO', 'DIET', "INFI", 'EDPH', 'IMGM', 'ENSE'];
 
     const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
@@ -72,8 +74,15 @@ function renderWheel(){
     let ctx;
 
     
-    document.getElementById("spin").addEventListener("click", spin);
-    
+    // document.getElementById("spin").addEventListener("click", spin);
+    document.getElementById("spin").addEventListener("click", () => {
+      spin();
+      setTimeout(() => {
+        Navigate('/question')
+      }, 5000); 
+        
+    });
+
     function drawRouletteWheel() {
       const canvas = document.getElementById("canvas");
       if (canvas.getContext) {
@@ -157,7 +166,6 @@ function renderWheel(){
       ctx.save();
       ctx.font = 'bold 30px Helvetica, Arial';
       const text = options[index]
-      renderQuestion(text);
       ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
       ctx.restore();
     }
@@ -173,7 +181,7 @@ function renderWheel(){
 }
 
 
-
+/*
 function renderQuestion(){
   const question = document.querySelector('#questionWrapper');
   question.innerHTML=`
@@ -188,10 +196,9 @@ function renderQuestion(){
       
     </div>           
   </div>
-
   `
- 
 }
+*/
 
 
 function players(){
@@ -201,9 +208,10 @@ function players(){
     const player2Name = document.querySelector("#player2Name");
     const name2 = getPlayers(2);
     player2Name.innerHTML = name2
+    
     const player3Name = document.querySelector("#player3Name");
     const name3 = getPlayers(3);
-    if (name3 === undefined){
+    if (!name){
       player3Name.innerHTML = "Joueur 3"
     }else{
       player3Name.innerHTML = name3
@@ -211,7 +219,7 @@ function players(){
   
     const player4Name = document.querySelector("#player4Name");
     const name4 = getPlayers(4);
-    if (name4 === undefined){
+    if (!name4){
       player4Name.innerHTML = "Joueur 4"
     }else{
     player4Name.innerHTML = name4
@@ -219,4 +227,4 @@ function players(){
 }
 
 
-export default GamePage;   
+export {GamePage, players} ;   
