@@ -178,7 +178,7 @@ function setUpPageWithAuthenticatedUser() {
               </div>
           </div>
           <div class="pt-4">
-              <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE!">
+              <input class="btn btn-primary" type="submit" id="startGame" value="COMMENCER LA PARTIE !">
               <p id="progressText"></p>
           </div>
       </div>

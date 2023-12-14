@@ -64,7 +64,7 @@ function renderQuestion(){
       <span id="categorie"></span>
       </div>
       <div class = "card-body p-5">
-        <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
+        <p class = "card-text fs-2 p-5 " id="question"></p>
           <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
           <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
         
@@ -76,7 +76,9 @@ function renderQuestion(){
 
   async function renderQuestionDetail(){
     const spanCat = document.querySelector('#categorie');
-    const cat = await getOneQuestion('INFO');
-    spanCat.innerHTML=`${cat[0].category}`
+    const spanQuestion = document.querySelector('#question');
+    const cat = await getOneQuestion('ENSE');
+    spanCat.innerHTML=`${cat.nom_categorie}`
+    spanQuestion.innerHTML=`${cat.question}`
   }
   export default Question;

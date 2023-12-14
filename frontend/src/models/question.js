@@ -5,7 +5,7 @@ async function getOneQuestion(category) {
         const question = await response.json();
         return question;
       } catch (err) {
-        console.error('getOnQuestion::error: ', err);
+        console.error('getOneQuestion::error: ', err);
         throw err;
       }
 }

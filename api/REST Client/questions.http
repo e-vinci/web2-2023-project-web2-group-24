@@ -3,6 +3,8 @@
 ### Try to get one random question with category ENSE
 GET {{baseUrl}}/questions/?category=ENSE
 
+### Try to get one random question with category INFO
+GET {{baseUrl}}/questions/?category=INFO
 
 ### Try to get one random question with an inexistant category
 GET {{baseUrl}}/questions/?category=BASKETBALL
