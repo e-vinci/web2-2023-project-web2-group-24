@@ -32,6 +32,13 @@ function renderQuestion(){
   `
   renderAQuestion() 
 }
+
+async function renderAQuestion() {
+  const cat = document.querySelector('#categorie');
+  const q =  await getOneQuestion('ENSE');
+  cat.innerHTML = q.category;
+
+}
 function renderGamePage(){
   const main = document.querySelector('main');
     main.innerHTML =`
@@ -79,7 +86,6 @@ function renderGamePage(){
 
 // }
  
-
 
 
 function renderWheel(){
