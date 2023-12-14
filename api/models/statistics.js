@@ -1,7 +1,7 @@
 const client = require('../elephantsql');
 
 async function readAllStatisticsOfAnUser(user) {
-  const result = await client.query('SELECT s.* FROM web2.statistiques s WHERE s.utilisateur = $1', [user]);
+  const result = await client.query('SELECT s.*, u.nom_utilisateur, c.nom_categorie FROM web2.statistiques s, web2.utilisateurs u, web2.categories c WHERE s.utilisateur = $1 AND u.no_utilisateur = s.utilisateur AND s.categorie_preferee = c.id_categorie', [user]);
   return result.rows[0];
 }
 

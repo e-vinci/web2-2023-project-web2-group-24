@@ -50,6 +50,11 @@ INSERT INTO web2.utilisateurs(nom_utilisateur, email, mdp) VALUES ('Robin', 'gre
 INSERT INTO web2.statistiques(utilisateur, nb_questions_posees, nb_parties_jouees, nb_victoire, categorie_preferee) VALUES (1,10,5,2,'ENSE');
 
 
+
+INSERT INTO web2.utilisateurs(nom, prenom, email, mdp) VALUES ('QI', 'Jo', 'joachim.qi@gmail.com', '1244');
+INSERT INTO web2.statistiques(utilisateur, nb_parties_jouees, categorie_preferee, nb_victoire) VALUES (1, 10 ,'INFO', 10);
+
+
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Après avoir fini les 3 années de bachelier en instituteur primaire, nous sommes également diplomé comme maître spécial de religion',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Il y a des cours d''éducation corporelle', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Les études d''instituteur primaire se déroulent désormais en 4 ans',TRUE);

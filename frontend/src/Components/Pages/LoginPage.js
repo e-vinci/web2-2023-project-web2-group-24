@@ -1,10 +1,11 @@
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import { setAuthenticatedUser } from "../../utils/auths";
+import { login } from '../../models/user';
 
 const LoginPage = () => {
     clearPage();
     renderLoginPage();
-    
 };
 
 function renderLoginPage() {
@@ -17,7 +18,7 @@ function renderLoginPage() {
     
                 <h1 class="text-white mb-4 mt-3">Connexion</h1>
     
-                    <div class="card" style="border-radius: 15px;">
+                    <form class="card" style="border-radius: 15px;">
                         <div class="card-body">
     
                             <div class="row align-items-center pt-4 pb-3">
@@ -27,7 +28,7 @@ function renderLoginPage() {
     
                                 </div>
                                 <div class="col-md-9 pe-5">
-                                <input type="text" class="form-control form-control-lg" />
+                                <input type="text" class="form-control form-control-lg" id="username" required>
                                 </div>
                             </div>
     
@@ -41,7 +42,7 @@ function renderLoginPage() {
                                 </div>
                                 <div class="col-md-9 pe-5">
     
-                                    <input type="password" class="form-control form-control-lg"/>
+                                    <input type="password" id="pwd" class="form-control form-control-lg" required>
     
                                 </div>
                             </div>
@@ -52,12 +53,12 @@ function renderLoginPage() {
                             </div>
 
                             <div class="px-5 py-4">
-                                <button type="submit" class="btn btn-primary btn-lg">Connexion</button>
+                                <button type="submit" class="btn btn-primary btn-lg" id="connect">Connexion</button>
                             </div>
                             
     
                         </div>
-                    </div>
+                    </form>
     
                 </div>
             </div>
@@ -67,10 +68,42 @@ function renderLoginPage() {
     </section>
     `
 
-    const link = document.querySelector('#toInscription');
+const link = document.querySelector('#toInscription');
 link.addEventListener('click', (e) => {
     e.preventDefault();
     Navigate('/inscription')
+})
+
+const form = document.querySelector('form');
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const username = document.querySelector('#username').value;
+    const password = document.querySelector('#pwd').value;
+   
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({
+            username, 
+            password,
+        }),
+        headers: {
+            'Content-Type':'application/json'
+        },
+    }
+    const user = await login(options);
+    if(user === null){
+        form.innerHTML += `<div class="row d-flex justify-content-center">
+            <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
+                <div class="bg-danger text-white text-center p-3 rounded">
+                    <p>Cet utilisateur n'existe pas !</p>
+                </div>
+            </div>
+        </div>`;
+        return;
+    }
+
+    setAuthenticatedUser(user);
+    Navigate('/')
 })
 }
 
