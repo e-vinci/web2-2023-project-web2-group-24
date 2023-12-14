@@ -9,7 +9,7 @@ const GamePage = async () => {
   renderQuestion();
 };
 
-function renderGamePage(){
+function renderGamePage(){ 
   const main = document.querySelector('main');
     main.innerHTML =`
 
