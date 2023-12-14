@@ -1,5 +1,4 @@
 const express = require('express');
-const { authorize } = require('../utils/auths');
 
 const {
   readAllCategories,
@@ -8,7 +7,7 @@ const {
 const router = express.Router();
 
 // get all the categories
-router.get('/', authorize, async (req, res) => {
+router.get('/', async (req, res) => {
   const categories = await readAllCategories();
 
   if (!categories) {

@@ -4,13 +4,13 @@ import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 
 const PersonnalStatsPage = async () => {
-  if (!isAuthenticated){
+  if (!isAuthenticated()){
       Navigate('/connexion')
-  }
-  clearPage();
+  } else{
+    clearPage();
   await renderPersonalStatsPage();   
-   
-}
+  }
+};
 
 async function renderPersonalStatsPage(){
   const main = document.querySelector('main');
@@ -69,7 +69,7 @@ async function renderStats() {
         'Authorization': user.token
     },
 }
-  const stats = await getAllStatistics(1, options);
+  const stats = await getAllStatistics(user.id, options);
   username.innerHTML = `Statistiques de ${stats.nom_utilisateur}`
   tdNbQuestion.innerHTML = `${stats.nb_questions_posees} questions posées` 
   tdNbParties.innerHTML = `${stats.nb_parties_jouees} parties jouées` 

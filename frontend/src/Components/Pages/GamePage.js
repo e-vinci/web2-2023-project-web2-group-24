@@ -1,86 +1,65 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-// import Chart from 'chart.js/auto';
 
 import { clearPage } from '../../utils/render';
 // import game from '../../models/game.js'
 
 
+const GamePage = async () => {
+  clearPage();
+  renderGamePage();
+  renderQuestion();
+};
 
-
-const GamePage = () => {
-    clearPage();
-    renderGamePage();
-    renderQuestion();
-  };
-function renderQuestion(){
-  const question = document.querySelector('#questionWrapper');
-  question.innerHTML=`
-  <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
-    <div class = "card-header fs-1 p-4">
-      Question sur : [CATEGORIE]
-    </div>
-    <div class = "card-body p-5">
-      <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
-      <div>
-        <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
-        <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
-      </div>
-    </div>           
-  </div>
-  ` 
-}
-function renderGamePage(){
+function renderGamePage(){ 
   const main = document.querySelector('main');
     main.innerHTML =`
-    <div class="container" id="questionWrapper" style: "z-index: 10"></div>
-    <div class="mb-5" style = "text-align:center;">
-        <canvas id="canvas" width="500" height="500"></canvas>
-        <input type="button" value="spin" style="float:center;" id='spin' />
-    </div>
-    <div class="position relative p-5">
-        <div class="position-absolute top-0 start-0 mt-5">
-            <div class="card mt-4">
-                <div class = "card-body bg-info">
-                    <h5 id="player1Name" class="card-title">Joueur 1 </h5>
+        <div class="container" id="questionWrapper" style: "z-index: 10"></div>
+        <div class="mb-5" style = "text-align:center;">
+            <canvas id="canvas" width="500" height="500"></canvas>
+            <input type="button" value="spin" style="float:center;" id='spin' />
+        </div>
+        <div class="position relative p-5">
+            <div class="position-absolute top-0 start-0 mt-5">
+                <div class="card mt-4">
+                    <div class = "card-body bg-info">
+                        <h5 id="player1Name" class="card-title">Joueur 1 </h5>
+                    </div>
+                </div>
+            </div>
+            <div class="position-absolute top-0 end-0 mt-5">
+                <div class="card mt-4">
+                    <div class = "card-body bg-success">
+                        <h5 id="player2Name" class="card-title">Joueur 2 </h5>
+                    </div>
+                </div>
+            </div>
+            <div id="player3Card" class="position-absolute bottom-0 start-0">
+                <div class="card">
+                    <div class = "card-body bg-danger">
+                        <h5 id="player3Name" class="card-title">Joueur 3 </h5>
+                    </div>
+                </div>
+            </div>
+            <div id="player4Card" class="position-absolute bottom-0 end-0">
+                <div class="card mt-4">
+                    <div class = "card-body bg-warning">
+                        <h5 id="player4Name" class="card-title">Joueur 4 </h5>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="position-absolute top-0 end-0 mt-5">
-            <div class="card mt-4">
-                <div class = "card-body bg-success">
-                    <h5 id="player2Name" class="card-title">Joueur 2 </h5>
-                </div>
-            </div>
-        </div>
-        <div id="player3Card" class="position-absolute bottom-0 start-0">
-            <div class="card">
-                <div class = "card-body bg-danger">
-                    <h5 id="player3Name" class="card-title">Joueur 3 </h5>
-                </div>
-            </div>
-        </div>
-        <div id="player4Card" class="position-absolute bottom-0 end-0">
-            <div class="card mt-4">
-                <div class = "card-body bg-warning">
-                    <h5 id="player4Name" class="card-title">Joueur 4 </h5>
-                </div>
-            </div>
-        </div>
-    </div>
+         
+        renderWheel();
+    }
     ` 
-    renderWheel();
+    players()
+    renderWheel()
 }
-// function players(){
-//    const player1Name = document.querySelector("#player1Name");
-//    player1Name.innerHTML = 
-
-// }
- 
 
 
 
 function renderWheel(){
-    const options = ["info", "pharma", "diétique", "random", "idk", "prout"];
+    const options = ["info", "pharma", "diÃ©tique", "random", "idk", "prout"];
 
     const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
     
@@ -92,6 +71,7 @@ function renderWheel(){
     let spinTimeTotal = 0;
     
     let ctx;
+
     
     document.getElementById("spin").addEventListener("click", spin);
     
@@ -178,6 +158,7 @@ function renderWheel(){
       ctx.save();
       ctx.font = 'bold 30px Helvetica, Arial';
       const text = options[index]
+      renderQuestion(text);
       ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
       ctx.restore();
     }
@@ -193,4 +174,32 @@ function renderWheel(){
 }
 
 
-export default GamePage;        
+
+function renderQuestion(){
+  const question = document.querySelector('#questionWrapper');
+  question.innerHTML=`
+  <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
+    <div class = "card-header fs-1 p-4" >
+    <p id="categorie"></p>
+    </div>
+    <div class = "card-body p-5">
+      <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
+        <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
+        <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
+      
+    </div>           
+  </div>
+
+  `
+ 
+}
+
+
+function players(){
+    const player1Name = document.querySelector("#player1Name");
+    player1Name.innerHTML = 'Hello'
+
+}
+
+
+export default GamePage; 

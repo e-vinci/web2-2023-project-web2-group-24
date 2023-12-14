@@ -2,23 +2,24 @@ import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import { setAuthenticatedUser } from "../../utils/auths";
 import { login } from '../../models/user';
+import Navbar from '../Navbar/Navbar';
 
-const LoginPage = () => {
+const LoginPage = async () => {
     clearPage();
-    renderLoginPage();
+    await renderLoginPage();
 };
 
-function renderLoginPage() {
+async function renderLoginPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
-    <section class="vh-100 bg-primary" ;">
+    <section class="vh-100" ;">
     <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9">
     
-                <h1 class="text-white mb-4 mt-3">Connexion</h1>
+                <h1 class="text-primary text-decoration-underline mb-4 mt-3">Connexion</h1>
     
-                    <form class="card" style="border-radius: 15px;">
+                    <form class="card text-dark  border-primary bg-white mb-3" style="border-radius: 15px;">
                         <div class="card-body">
     
                             <div class="row align-items-center pt-4 pb-3">
@@ -77,6 +78,7 @@ link.addEventListener('click', (e) => {
 const form = document.querySelector('form');
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd').value;
    
@@ -103,8 +105,10 @@ form.addEventListener('submit', async (e) => {
     }
 
     setAuthenticatedUser(user);
-    Navigate('/')
-})
+    Navbar();
+    Navigate('/');
+});
+
 }
 
 

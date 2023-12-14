@@ -48,7 +48,7 @@ function renderHomePage() {
   </p>
   </div>
   <div class="container-fluid d-flex justify-content-center">
-  <button type="button" class="btn btn-primary"><a href="#UpPage" class="text-white"> Retourner à la page du haut </a> </button>
+  <a href="#UpPage" class="text-secondary"> Retourner à la page du haut</a>
   </div>
 </div>
   `;

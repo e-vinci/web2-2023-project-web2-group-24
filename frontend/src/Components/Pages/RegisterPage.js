@@ -12,12 +12,12 @@ async function renderRegisterPage() {
     const main = document.querySelector('main');
     main.innerHTML = `
     <div id="privacyPolicyWrapper"></div>
-    <section class="bg-primary">
+    <section>
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-xl-9 mb-5">
-                    <h1 class="text-white mb-4 mt-3">Inscription</h1>
-                        <form class="card" style="border-radius: 15px;">
+                    <h1 class="text-primary text-decoration-underline mb-4 mt-3">Inscription</h1>
+                        <form class="card text-dark  border-primary bg-white mb-3" style="border-radius: 15px;">
                             <div class="card-body">
 
                                 <div class="row align-items-center pt-4 pb-3">
@@ -70,7 +70,7 @@ async function renderRegisterPage() {
    
                             </div>
 
-                            <div class="card-body mx-3">Les champs marqués d'une * sont obligatoires </div>
+                            <div class="card-body text-dark mx-3">Les champs marqués d'une * sont obligatoires </div>
 
                             <div class="px-5 py-4">
                                 <input type="submit" class="btn btn-primary btn-lg" id="submit" value="Inscription">
