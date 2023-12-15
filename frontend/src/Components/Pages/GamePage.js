@@ -252,7 +252,7 @@ function players(){
   const player3Name = document.querySelector("#player3Name");
   const player3 = JSON.parse(sessionStorage.getItem('player3'));
   if (player3 === null){
-    player3Name.innerHTML = "Joueur 3"
+    player3Name.innerHTML = "Non actif"
     const player3Stars = document.querySelector("#stars3");
     player3Stars.innerHTML='';
   }else{
@@ -286,7 +286,7 @@ function players(){
   const player4Name = document.querySelector("#player4Name");
   const player4 = JSON.parse(sessionStorage.getItem('player4'))
   if (player4 === null){
-    player4Name.innerHTML = "Joueur 4"
+    player4Name.innerHTML = "Non actif"
     const player4Stars = document.querySelector("#stars4");
     player4Stars.innerHTML='';
   }else{

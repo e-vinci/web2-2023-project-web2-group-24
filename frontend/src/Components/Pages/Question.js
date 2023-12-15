@@ -71,6 +71,8 @@ async function renderQuestion(){
       <span class ="mb-5 fs-3" id="answer" ></span>          
     </div>
     `
+    
+
     const categorie = sessionStorage.getItem('categorie');
     renderQuestionDetail(categorie);
 
@@ -126,7 +128,7 @@ function checkAnswer(answer){
         }
         if (categorie === 'IMGM'){   
             const answerIMGM = player.answerIMGM + 1;
-            player.answerBIM = answerIMGM;
+            player.answerIMGM = answerIMGM;
             sessionStorage.setItem('currentPlayer', JSON.stringify(player));
         }
          if (categorie === 'DIET'){
@@ -146,6 +148,9 @@ function checkAnswer(answer){
         }
         spanAnswer.innerHTML=`C'est une bonne réponse !`
         console.log('CHECKKKKKKK')
+        console.log(`CURRENT PLAYER : ${sessionStorage.getItem('currentPlayer')}`)
+        console.log(`PLAYER1 : ${sessionStorage.getItem('player1')}`)
+        console.log(`PLAYER2 : ${sessionStorage.getItem('player2')}`)   
        checkWin();
 
     }else{

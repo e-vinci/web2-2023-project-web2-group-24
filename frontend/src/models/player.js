@@ -116,24 +116,24 @@ function nextPlayer(){
     const player4 = JSON.parse(sessionStorage.getItem('player4'));
     
     if (currentPlayer.number === 1) {
-        sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
+        sessionStorage.setItem('player1', JSON.stringify(currentPlayer));
         sessionStorage.setItem('currentPlayer', JSON.stringify(player2));
     } else if (currentPlayer.number === 2) {
-        sessionStorage.setItem('currentPlayer', JSON.stringify(player2));
+        sessionStorage.setItem('player2', JSON.stringify(currentPlayer));
         if (player3 === null) {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
         } else {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player3));
         }
     } else if (currentPlayer.number === 3) {
-        sessionStorage.setItem('currentPlayer', JSON.stringify(player3));
+        sessionStorage.setItem('player3', JSON.stringify(currentPlayer));
         if (player4 === null) {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
         } else {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player4));
         }
     } else if (currentPlayer.number === 4) {
-        sessionStorage.setItem('currentPlayer', JSON.stringify(player4));
+        sessionStorage.setItem('player4', JSON.stringify(currentPlayer));
         sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
     }
 }

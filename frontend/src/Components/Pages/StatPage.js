@@ -20,27 +20,7 @@ function renderStatPage(){
                             <th id="player1Name"></th>
                         </tr>
                     </thead>
-                    <tbody id="content1">
-                        <!-- Table content goes here -->
-                        <tr>
-                            <td id="info1"></td>
-                        </tr>
-                        <tr>
-                            <td id="diet1"></td>
-                        </tr>
-                        <tr>
-                            <td id="infi1"></td>
-                        </tr>
-                        <tr>
-                            <td id="cosp1"></td>
-                        </tr>
-                        <tr>
-                            <td id="imgm1"></td>
-                        </tr>
-                        <tr>
-                            <td id="ense1"></td>
-                        </tr>
-                    </tbody>
+                    <tbody id="content1"></tbody>
                 </table>
             </div>
 
@@ -52,27 +32,7 @@ function renderStatPage(){
                             <th id="player2Name"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Table content goes here -->
-                        <tr>
-                            <td id="info2">info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="content2"></tbody>
                 </table>
             </div>
 
@@ -84,27 +44,7 @@ function renderStatPage(){
                             <th id="player3Name"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Table content goes here -->
-                        <tr>
-                            <td id="info4">info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="content3"></tbody>
                 </table>
             </div>
 
@@ -116,27 +56,7 @@ function renderStatPage(){
                             <th id="player4Name"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <!-- Table content goes here -->
-                        <tr>
-                            <td id="info4">info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                        <tr>
-                            <td>info: 8/10</td>
-                        </tr>
-                    </tbody>
+                    <tbody id="content4"></tbody>
                 </table>
             </div>
 
@@ -159,15 +79,44 @@ function players(){
     const player3 = JSON.parse(sessionStorage.getItem('player3'));
     const player4 = JSON.parse(sessionStorage.getItem('player4'));
 
-    /* Affiche les noms des joueurs dans les bonnes cases */
+    /* Affiche les stats des joueurs dans les bonnes cases */
     player1Name.innerHTML = player1.name;
+    const container = document.querySelector("#content1");
+    container.innerHTML = `
+    <tr><td> INFO: ${player1.answerINFO}</td></tr>
+    <tr><td> DIET: ${player1.answerDIET}</td></tr>
+    <tr><td> INFI: ${player1.answerINFI}</td></tr>
+    <tr><td> COSP: ${player1.answerCOSP}</td></tr>
+    <tr><td> IMGM: ${player1.answerIMGM}</td></tr>
+    <tr><td> ENSE: ${player1.answerENSE}</td></tr>
+    `
+
     player2Name.innerHTML = player2.name;
+    const container2 = document.querySelector("#content2");
+    container2.innerHTML = `
+    <tr><td> INFO: ${player2.answerINFO}</td></tr>
+    <tr><td> DIET: ${player2.answerDIET}</td></tr>
+    <tr><td> INFI: ${player2.answerINFI}</td></tr>
+    <tr><td> COSP: ${player2.answerCOSP}</td></tr>
+    <tr><td> IMGM: ${player2.answerIMGM}</td></tr>
+    <tr><td> ENSE: ${player2.answerENSE}</td></tr>
+    `
+
 
     if (player3 === null){
       const table3 = document.querySelector("#table3");
         table3.style.display = "none"
     }else{
       player3Name.innerHTML = player3.name
+        const container3 = document.querySelector("#content3");
+        container3.innerHTML = `
+        <tr><td> INFO: ${player3.answerINFO}</td></tr>
+        <tr><td> DIET: ${player3.answerDIET}</td></tr>
+        <tr><td> INFI: ${player3.answerINFI}</td></tr>
+        <tr><td> COSP: ${player3.answerCOSP}</td></tr>
+        <tr><td> IMGM: ${player3.answerIMGM}</td></tr>
+        <tr><td> ENSE: ${player3.answerENSE}</td></tr>
+        `
     }
     
     
@@ -176,15 +125,20 @@ function players(){
         table4.style.display = "none"
     }else{
         player4Name.innerHTML = player4.name
+        const container4 = document.querySelector("#content4");
+        container4.innerHTML = `
+        <tr><td> INFO: ${player4.answerINFO}</td></tr>
+        <tr><td> DIET: ${player4.answerDIET}</td></tr>
+        <tr><td> INFI: ${player4.answerINFI}</td></tr>
+        <tr><td> COSP: ${player4.answerCOSP}</td></tr>
+        <tr><td> IMGM: ${player4.answerIMGM}</td></tr>
+        <tr><td> ENSE: ${player4.answerENSE}</td></tr>
+        `
     }
-    const container = document.querySelector("#content1");
-    container.innerHTML = `
-    <tr><td> INFO: ${player1.answerINFO}</td></tr>
-    <tr><td> DIET: ${player1.answerDIET}</td></tr>
-    <tr><td> INFI: ${player1.answerINFI}</td></tr>
-    <tr><td> COSP: ${player1.answerCOSP}</td></tr>
-    <tr><td> IMGM: ${player1.answerIMGM}</td></tr>
-    <tr><td> ENSE: ${player1.answerENSE}</td></tr>`
     
+    
+    
+
+
 }
 export default StatPage;
