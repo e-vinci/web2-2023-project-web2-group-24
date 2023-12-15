@@ -104,8 +104,10 @@ form.addEventListener('submit', async (e) => {
                 </div>
             </div>
         </div>`;
-    }
-    else{
+        setTimeout(() => {
+            error.innerHTML = '';
+        }, 2500);
+    }else{
        setAuthenticatedUser(user);
     Navbar();
     Navigate('/'); 
