@@ -62,7 +62,7 @@ function renderGamePage(){
 function renderWheel(){
     const options = ['INFO', 'DIET', "INFI", 'EDPH', 'IMGM', 'ENSE'];
 
-    const colors = ["red", "green", "orange", "yellow", "blue", "purple"]
+    const colors = ["Salmon", "Thistle", "Yellow", "LimeGreen", "SkyBlue", "violet"]
     
     let startAngle = 0;
     const arc = Math.PI / (options.length / 2);
@@ -94,7 +94,7 @@ function renderWheel(){
         ctx.strokeStyle = "black";
         ctx.lineWidth = 2;
     
-        ctx.font = 'bold 12px Helvetica, Arial';
+        ctx.font = '20px Lobster, cursive';
     
         for(let i = 0; i < options.length; i+=1) {
           const angle = startAngle + i * arc;
@@ -162,7 +162,7 @@ function renderWheel(){
       const arcd = arc * 180 / Math.PI;
       const index = Math.floor((360 - degrees % 360) / arcd);
       ctx.save();
-      ctx.font = 'bold 30px Helvetica, Arial';
+      ctx.font = 'bold 40px Helvetica, Arial';
       const text = options[index]
       localStorage.setItem('categorie', text)
       ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
