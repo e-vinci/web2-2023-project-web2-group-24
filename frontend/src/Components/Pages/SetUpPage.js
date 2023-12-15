@@ -221,6 +221,7 @@ function attachChangeEventToP4() {
 };
 
 function attachEventToSubmit() {
+  sessionStorage.clear()
   const form = document.querySelector('#setUpForm');
 
   form.addEventListener('submit', (e) => {

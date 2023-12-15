@@ -13,7 +13,7 @@ const GamePage = async () => {
 function renderGamePage(){ 
   const main = document.querySelector('main');
     main.innerHTML =`
-        <div id="turn"></div>
+        <div id="turn" class ="text-center fs-2"></div>
         <div class="mb-5" style = "text-align:center;">
             <canvas id="canvas" width="500" height="500"></canvas>
             <div>
@@ -54,8 +54,21 @@ function renderGamePage(){
     ` 
     players()
     renderWheel()
+    renderTurn()
+    
 }
 
+function renderTurn(){
+  
+    // Récupère le joueur actuel du localStorage
+    const currentPlayer = localStorage.getItem('currentPlayer');
+
+    // Récupère l'élément HTML pour le tour
+    const turnDiv = document.querySelector('#turn');
+
+    // Modifie le contenu de la div turn pour afficher le joueur actuel
+    turnDiv.innerHTML = `C'est au tour du joueur ${currentPlayer}`;
+}
 
 
 function renderWheel(){
@@ -205,4 +218,4 @@ function players(){
 }
 
 
-export {GamePage, players} ;   
+export {GamePage, players, renderTurn} ;   

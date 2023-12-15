@@ -3,7 +3,7 @@ import getOneQuestion from '../../models/question';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 
-import { players } from './GamePage';
+import { players, renderTurn } from './GamePage';
 
 const Question = async () => {
     clearPage();
@@ -14,6 +14,7 @@ const Question = async () => {
 function renderQuestionPage(){
 const main = document.querySelector('main');
 main.innerHTML =`
+<div id="turn" class ="text-center fs-2"></div>
 <div class="container" id="questionWrapper" style: "z-index: 10"></div>
         
         <div class="position relative p-5">
@@ -50,6 +51,7 @@ main.innerHTML =`
     `     
     players()  
     renderQuestion()
+    renderTurn()
 }
 
 
@@ -87,7 +89,7 @@ async function renderQuestion(){
         checkAnswer(btnFalse.value);
         setTimeout(() => {
             Navigate('/game')
-          }, 2000);
+        }, 2000);
     })
     
 
@@ -105,19 +107,11 @@ async function renderQuestion(){
 
 function checkAnswer(answer){
     const spanAnswer = document.querySelector('#answer');
-    
-  if (answer === localStorage.getItem('answer')){
-    spanAnswer.innerHTML=`C'est une bonne réponse !`
-    
+    if (answer === localStorage.getItem('answer')){
+        spanAnswer.innerHTML=`C'est une bonne réponse !`
+    }else{
+        spanAnswer.innerHTML=`C'est une mauvaise réponse !` 
+    }  
 }
-else{
-    spanAnswer.innerHTML=`C'est une mauvaise réponse !`
-}
-
-
-  
-}
-
-
-  
+ 
   export default Question;
