@@ -108,6 +108,7 @@ function checkAnswer(answer){
     
   if (answer === localStorage.getItem('answer')){
     spanAnswer.innerHTML=`C'est une bonne réponse !`
+    
 }
 else{
     spanAnswer.innerHTML=`C'est une mauvaise réponse !`

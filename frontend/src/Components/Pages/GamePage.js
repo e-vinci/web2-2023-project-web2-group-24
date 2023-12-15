@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
 import { clearPage } from '../../utils/render';
-import { getPlayers } from '../../models/game';
 import Navigate from '../Router/Navigate';
 
 
@@ -14,7 +13,7 @@ const GamePage = async () => {
 function renderGamePage(){ 
   const main = document.querySelector('main');
     main.innerHTML =`
-        <div class="container" id="questionWrapper" style: "z-index: 10"></div>
+        <div id="turn"></div>
         <div class="mb-5" style = "text-align:center;">
             <canvas id="canvas" width="500" height="500"></canvas>
             <div>
@@ -180,28 +179,29 @@ function renderWheel(){
 }
 
 function players(){
-    const player1Name = document.querySelector("#player1Name");
-    const name = getPlayers(1);
-    player1Name.innerHTML = name
-    const player2Name = document.querySelector("#player2Name");
-    const name2 = getPlayers(2);
-    player2Name.innerHTML = name2
-    
-    const player3Name = document.querySelector("#player3Name");
-    const name3 = getPlayers(3);
-    if (!name){
-      player3Name.innerHTML = "Joueur 3"
-    }else{
-      player3Name.innerHTML = name3
-    }
+  const player1Name = document.querySelector("#player1Name");
+  const player1 = JSON.parse(sessionStorage.getItem('player1'));
+  player1Name.innerHTML = player1.name;
   
-    const player4Name = document.querySelector("#player4Name");
-    const name4 = getPlayers(4);
-    if (!name4){
-      player4Name.innerHTML = "Joueur 4"
-    }else{
-    player4Name.innerHTML = name4
-    }
+  const player2Name = document.querySelector("#player2Name");
+  const player2 = JSON.parse(sessionStorage.getItem('player2'))
+  player2Name.innerHTML = player2.name;
+  const player3Name = document.querySelector("#player3Name");
+  const player3 = JSON.parse(sessionStorage.getItem('player3'));
+  if (player3 === null){
+    player3Name.innerHTML = "Joueur 3"
+  }else{
+    player3Name.innerHTML = player3.name
+  }
+  
+  const player4Name = document.querySelector("#player4Name");
+  const player4 = JSON.parse(sessionStorage.getItem('player4'))
+  if (player4 === null){
+    player4Name.innerHTML = "Joueur 4"
+  }else{
+    player4Name.innerHTML = player4.name
+  }
+
 }
 
 

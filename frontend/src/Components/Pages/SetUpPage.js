@@ -1,7 +1,6 @@
 import anime from 'animejs/lib/anime.es';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
-import {addPlayer} from '../../models/game';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 
 const SetUpPage = () => {
@@ -230,48 +229,48 @@ function attachEventToSubmit() {
     const name2 = document.querySelector('#inputPseudo2').value;
     const check3 = document.querySelector('#checkboxP3');
     const check4 = document.querySelector('#checkboxP4');
-    const player1 = {
+    const player1 = JSON.stringify({
       name: name1,
       answerBIN: 0,
       answerCOA: 0,
       answerBIM: 0,
       answerDIE: 0,
       answerINF: 0,
-    };
-    addPlayer(JSON.stringify(player1));
-    
-    const player2 = {
+    });
+    sessionStorage.setItem('player1', player1)
+     
+    const player2 = JSON.stringify({
       name: name2,
       answerBIN: 0,
       answerCOA: 0,
       answerBIM: 0,
       answerDIE: 0,
       answerINF: 0,
-    };
-    addPlayer(JSON.stringify(player2));
+    });
+    sessionStorage.setItem('player2', player2)
     if (check3.checked) {
       const name3 = document.querySelector('#inputPseudo3').value;
-      const player3 = {
+      const player3 = JSON.stringify({
         name: name3,
         answerBIN: 0,
         answerCOS: 0,
         answerBIM: 0,
         answerDIE: 0,
         answerINF: 0,
-      };
-      addPlayer(JSON.stringify(player3));
+      });
+      sessionStorage.setItem('player3', player3)
     }
     if (check4.checked) {
       const name4 = document.querySelector('#inputPseudo4').value;
-      const player4 = {
+      const player4 = JSON.stringify({
         name: name4,
         answerBIN: 0,
         answerCOS: 0,
         answerBIM: 0,
         answerDIE: 0,
         answerINF: 0,
-      };
-      addPlayer(JSON.stringify(player4));
+      });
+      sessionStorage.setItem('player4', player4)
     }
     
     
