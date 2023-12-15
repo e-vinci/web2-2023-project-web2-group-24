@@ -1,17 +1,17 @@
 DROP SCHEMA IF EXISTS web2 CASCADE ;
 CREATE SCHEMA web2;
 
-CREATE TABLE web2.utilisateurs(
-                                  no_utilisateur SERIAL PRIMARY KEY NOT NULL,
-                                  nom VARCHAR(30) NOT NULL
-                                      CHECK ( utilisateurs.nom <> '' ),
-                                  prenom VARCHAR(30) NOT NULL
-                                      CHECK ( utilisateurs.prenom<> '' ),
-                                  email VARCHAR(60) NOT NULL UNIQUE
-                                      CHECK ( utilisateurs.email SIMILAR TO '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+'),
-                                  mdp VARCHAR(60) NOT NULL
-                                      CHECK ( utilisateurs.mdp <> '' )
+CREATE TABLE web2.utilisateurs
+(
+    no_utilisateur  SERIAL PRIMARY KEY NOT NULL,
+    nom_utilisateur VARCHAR(30)      NOT NULL UNIQUE
+        CHECK ( utilisateurs.nom_utilisateur <> '' ),
+    email           VARCHAR(60)        NOT NULL UNIQUE
+        CHECK ( utilisateurs.email SIMILAR TO '[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]+'),
+    mdp             VARCHAR(100)       NOT NULL
+        CHECK ( utilisateurs.mdp <> '' )
 );
+
 
 CREATE TABLE web2.categories(
                                 id_categorie CHAR(4) PRIMARY KEY NOT NULL
@@ -27,7 +27,7 @@ CREATE TABLE web2.statistiques(
                                       CHECK ( statistiques.nb_parties_jouees >= 0 ),
                                   nb_victoire INTEGER DEFAULT 0 NOT NULL
                                       CHECK ( statistiques.nb_victoire >=0 ),
-                                  categorie_preferee CHAR(4) REFERENCES web2.categories(id_categorie) NOT NULL
+                                  categorie_preferee CHAR(4) REFERENCES web2.categories(id_categorie) NULL
 );
 
 CREATE TABLE web2.questions(
@@ -36,15 +36,16 @@ CREATE TABLE web2.questions(
                                question VARCHAR(200) NOT NULL,
                                valeur BOOLEAN NOT NULL
 );
-
-
-
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFO', 'INFORMATIQUE');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('DIET', 'DIETETIQUE');--
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('INFI', 'INFIRMIER');--
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('COSP', 'COACHING SPORTIF');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('IMGM', 'IMAGERIE MEDICALE');
 INSERT INTO web2.categories(id_categorie, nom_categorie) VALUES ('ENSE', 'ENSEIGNANT');
+
+
+INSERT INTO web2.utilisateurs(nom_utilisateur, email, mdp) VALUES ('Robin', 'greg.laplume@gmail.com','$2b$10$0uPAIotQVk3n2uQm0d.n0ukJH8zoui8S9mAbUjDHa5fePDNPVyEfO');
+INSERT INTO web2.statistiques(utilisateur, nb_questions_posees, nb_parties_jouees, nb_victoire, categorie_preferee) VALUES (1,10,5,2,'ENSE');
 
 
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Après avoir fini les 3 années de bachelier en instituteur primaire, nous sommes également diplomé comme maître spécial de religion',TRUE);
@@ -58,8 +59,6 @@ INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cet
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, il n''y a que deux stages en BAC3' , FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, durant le BAC2 il y a un mois de stage où 80% de l''horaire d''une classe est pris en charge par un étudiant',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cette formation, il n''y pas de cours de musique et d''art plastique. Ces cours sont réservés uniquement aux cursus d''instituteur maternelle',FALSE);
-
-
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'La radiographie est une modalité d’imagerie qui utilise des ondes sonores pour créer des images du corps humain', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Les rayons x sont utilisés dans une tomographie par ordinateur', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une IRM est une modalité d’imagerie utilisant un champ magnétiqque  et des ondes radio pour créer des images détaillées du corps', TRUE);
@@ -91,3 +90,41 @@ INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','La conso
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','TDD signifie To Do Documentation', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Un framework est un schéma des différentes pages d’un site web ', FALSE);
 
+/*
+CREATE OR REPLACE FUNCTION web2.ajout_utilisateur() RETURN VOID AS $$
+DECLARE
+    no_utilisateur INTEGER;
+BEGIN
+    SELECT u.no_utilisateur FROM web2.utilisateurs u WHERE u.email = mail INTO no_utilisateur;
+    IF (no_utilisateur !== NULL) THEN
+    UPDATE web2.statistiques SET nb_questions_posees = nb_questions_posees + nb_question WHERE web2.statistiques.utilisateur = no_utilisateur;
+    END IF;
+    END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION web2.trigger_ajout_nb_questions() RETURNS TRIGGER AS $$
+BEGIN
+    IF (NEW.nb_questions_posees <= 0) THEN
+        RAISE 'nombre de questions posées non valide';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trigger_ajout_nb_questions BEFORE UPDATE ON web2.statistiques
+    FOR EACH ROW EXECUTE PROCEDURE web2.trigger_ajout_nb_questions();
+
+
+CREATE OR REPLACE FUNCTION web2.ajouter_nb_questions(nb_question INTEGER, mail INTEGER) RETURNS VOID AS $$
+DECLARE
+    no_utilisateur INTEGER;
+BEGIN
+    SELECT u.no_utilisateur FROM web2.utilisateurs u WHERE u.email = mail INTO no_utilisateur;
+    IF (no_utilisateur !== NULL) THEN
+    UPDATE web2.statistiques SET nb_questions_posees = nb_questions_posees + nb_question WHERE web2.statistiques.utilisateur = no_utilisateur;
+    END IF;
+    END;
+$$ LANGUAGE plpgsql;
+
+*/
