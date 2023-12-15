@@ -153,10 +153,7 @@ function checkAnswer(answer){
             sessionStorage.setItem('currentPlayer', JSON.stringify(player));
         }
         spanAnswer.innerHTML=`C'est une bonne réponse !`
-        console.log('CHECKKKKKKK')
-        console.log(`CURRENT PLAYER : ${sessionStorage.getItem('currentPlayer')}`)
-        console.log(`PLAYER1 : ${sessionStorage.getItem('player1')}`)
-        console.log(`PLAYER2 : ${sessionStorage.getItem('player2')}`)
+       
 
         if (checkWin()=== true){
             

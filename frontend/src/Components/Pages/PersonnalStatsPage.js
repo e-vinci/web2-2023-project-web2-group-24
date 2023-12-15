@@ -10,7 +10,6 @@ const PersonnalStatsPage = async () => {
     clearPage();
   await renderPersonalStatsPage();   
   }
-  
 };
 
 async function renderPersonalStatsPage(){

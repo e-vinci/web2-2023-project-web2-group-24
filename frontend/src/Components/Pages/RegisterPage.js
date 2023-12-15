@@ -90,7 +90,6 @@ async function renderRegisterPage() {
     });
 
     const form = document.querySelector('form');
-    console.log(form);
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const username = document.querySelector('#usernameInput').value;
