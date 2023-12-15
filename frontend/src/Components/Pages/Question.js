@@ -1,4 +1,5 @@
 
+import { nextPlayer } from '../../models/player';
 import getOneQuestion from '../../models/question';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
@@ -110,7 +111,8 @@ function checkAnswer(answer){
     if (answer === localStorage.getItem('answer')){
         spanAnswer.innerHTML=`C'est une bonne réponse !`
     }else{
-        spanAnswer.innerHTML=`C'est une mauvaise réponse !` 
+        spanAnswer.innerHTML=`C'est une mauvaise réponse !`
+        nextPlayer() 
     }  
 }
  

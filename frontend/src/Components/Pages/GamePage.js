@@ -2,6 +2,8 @@
 
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import { renderTurn } from '../../models/player';
+
 
 
 const GamePage = async () => {
@@ -58,17 +60,8 @@ function renderGamePage(){
     
 }
 
-function renderTurn(){
-  
-    // Récupère le joueur actuel du localStorage
-    const currentPlayer = localStorage.getItem('currentPlayer');
 
-    // Récupère l'élément HTML pour le tour
-    const turnDiv = document.querySelector('#turn');
 
-    // Modifie le contenu de la div turn pour afficher le joueur actuel
-    turnDiv.innerHTML = `C'est au tour du joueur ${currentPlayer}`;
-}
 
 
 function renderWheel(){

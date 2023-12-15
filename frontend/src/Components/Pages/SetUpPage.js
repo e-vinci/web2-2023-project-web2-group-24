@@ -231,6 +231,7 @@ function attachEventToSubmit() {
     const check3 = document.querySelector('#checkboxP3');
     const check4 = document.querySelector('#checkboxP4');
     const player1 = JSON.stringify({
+      number: 1,
       name: name1,
       answerBIN: 0,
       answerCOA: 0,
@@ -239,8 +240,10 @@ function attachEventToSubmit() {
       answerINF: 0,
     });
     sessionStorage.setItem('player1', player1)
+    sessionStorage.setItem('currentPlayer', player1)
      
     const player2 = JSON.stringify({
+      number: 2,
       name: name2,
       answerBIN: 0,
       answerCOA: 0,
@@ -252,6 +255,7 @@ function attachEventToSubmit() {
     if (check3.checked) {
       const name3 = document.querySelector('#inputPseudo3').value;
       const player3 = JSON.stringify({
+        number: 3,
         name: name3,
         answerBIN: 0,
         answerCOS: 0,
@@ -264,6 +268,7 @@ function attachEventToSubmit() {
     if (check4.checked) {
       const name4 = document.querySelector('#inputPseudo4').value;
       const player4 = JSON.stringify({
+        number: 4,
         name: name4,
         answerBIN: 0,
         answerCOS: 0,
