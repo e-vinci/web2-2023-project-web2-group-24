@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import anime from 'animejs/lib/anime.es';
-import { clearPage, renderImage } from '../../utils/render';
+import { clearPage} from '../../utils/render';
 import Navigate from '../Router/Navigate';
-import logoHEVinci from '../logoHEVinci.jpg';
+import logoHEVinci from '../../img/logoHEVinci.jpg';
 
 
 const HomePage = () => {
@@ -82,6 +82,11 @@ function launchButtonPlayAnimation() {
   };
 
 };
+
+function renderImage(url){
+  const img = document.querySelector('#img');
+  img.innerHTML += `<img src="${url}" height="100">`
+}
 
 
 export default HomePage;

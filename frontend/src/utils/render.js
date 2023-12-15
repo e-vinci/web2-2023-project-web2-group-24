@@ -16,8 +16,5 @@ const hideFooter = () => {
   footer.style.display = 'none';
 };
 
-function renderImage(url){
-  const img = document.querySelector('#img');
-  img.innerHTML += `<img src="${url}" height="100">`
-}
-export { clearPage, renderPageTitle, hideFooter, renderImage};
+
+export { clearPage, renderPageTitle, hideFooter};

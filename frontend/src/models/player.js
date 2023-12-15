@@ -13,12 +13,12 @@ function addPlayer() {
         const player1 = JSON.stringify({
             number: 1,
             name: name1,
-            answerINFO: 0,
-            answerCOSP: 0,
-            answerIMGM: 0,
-            answerDIET: 0,
-            answerINFI: 0,
-            answerENSE: 0,
+            answerINFO: 1,
+            answerCOSP: 1,
+            answerIMGM: 1,
+            answerDIET: 1,
+            answerINFI: 1,
+            answerENSE: 1,
         });
         sessionStorage.setItem('player1', player1)
         sessionStorage.setItem('currentPlayer', player1)
@@ -144,8 +144,9 @@ function checkWin(){
         playerToVerify.answerIMGM >=1 && playerToVerify.answerDIET >=1 && 
         playerToVerify.answerINFI >=1 && playerToVerify.answerENSE >=1){
         sessionStorage.setItem('winner', JSON.stringify(playerToVerify));
-        Navigate('/win')
+        return true
     }
+    return false
 }
 
 export {addPlayer, renderTurn, nextPlayer, checkWin};

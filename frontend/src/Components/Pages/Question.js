@@ -81,27 +81,32 @@ async function renderQuestion(){
     const btnTrue = document.querySelector('#btnTrue');
     btnTrue.addEventListener('click', (e) => {
         e.preventDefault();
-        document.getElementById("btnFalse").style.visibility = "hidden";
-        checkAnswer(btnTrue.value);
-        setTimeout(() => {
-            Navigate('/game')
-          }, 2000);
+document.getElementById("btnFalse").style.visibility = "hidden";
+checkAnswer(btnTrue.value);
+setTimeout(() => {
+    if (!checkWin()) {
+        Navigate('/game')
+    }
+}, 2000);
     })
 
     const btnFalse = document.querySelector('#btnFalse');
     btnFalse.addEventListener('click', (e) => {
         e.preventDefault();
-        document.getElementById("btnTrue").style.visibility = "hidden";
-        checkAnswer(btnFalse.value);
-        setTimeout(() => {
-            Navigate('/game')
-        }, 2000);
+document.getElementById("btnTrue").style.visibility = "hidden";
+checkAnswer(btnFalse.value);
+setTimeout(() => {
+    if (!checkWin()) {
+        Navigate('/game')
+    }
+}, 2000);
     })
     
 
   }
 
   
+
   async function renderQuestionDetail(categorie){
     const spanCat = document.querySelector('#categorie');
     const spanQuestion = document.querySelector('#question');
@@ -151,8 +156,12 @@ function checkAnswer(answer){
         console.log('CHECKKKKKKK')
         console.log(`CURRENT PLAYER : ${sessionStorage.getItem('currentPlayer')}`)
         console.log(`PLAYER1 : ${sessionStorage.getItem('player1')}`)
-        console.log(`PLAYER2 : ${sessionStorage.getItem('player2')}`)   
-       checkWin();
+        console.log(`PLAYER2 : ${sessionStorage.getItem('player2')}`)
+
+        if (checkWin()=== true){
+            
+            Navigate('/win')
+        };
 
     }else{
         spanAnswer.innerHTML=`C'est une mauvaise réponse !`
