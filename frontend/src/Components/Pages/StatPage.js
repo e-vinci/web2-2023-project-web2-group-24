@@ -1,10 +1,16 @@
 import { clearPage, hideFooter} from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import { isAuthenticated } from '../../utils/auths';
+import { updateStatistics } from '../../models/statistic';
 
-
-const StatPage = () => {
+const StatPage = async () => {
     clearPage();
     renderStatPage();
+    if (!isAuthenticated()){
+        Navigate('/connexion')
+    } else{
+     await addToPersonalStats();
+    }
 }
 
 function renderStatPage(){
@@ -71,10 +77,10 @@ function renderStatPage(){
     hideFooter()
     players()
 
-    const btn = document.querySelector('#replay');
-    btn.addEventListener('click', () => {
-        Navigate('/setup');
-    });
+const btn = document.querySelector('#replay');
+btn.addEventListener('click', () => {
+    Navigate('/setup');
+});
 }
 
 function players(){
@@ -83,13 +89,13 @@ function players(){
     const player2Name = document.querySelector("#player2Name");
     const player3Name = document.querySelector("#player3Name");
     const player4Name = document.querySelector("#player4Name");
-
+    
     /* Récupère les joueurs du sessionStorage */
     const player1 = JSON.parse(sessionStorage.getItem('player1'));
     const player2 = JSON.parse(sessionStorage.getItem('player2'));
     const player3 = JSON.parse(sessionStorage.getItem('player3'));
     const player4 = JSON.parse(sessionStorage.getItem('player4'));
-
+    
     /* Affiche les stats des joueurs dans les bonnes cases */
     player1Name.innerHTML = player1.name;
     const container = document.querySelector("#content1");
@@ -101,7 +107,7 @@ function players(){
     <tr><td> IMGM: ${player1.answerIMGM}</td></tr>
     <tr><td> ENSE: ${player1.answerENSE}</td></tr>
     `
-
+    
     player2Name.innerHTML = player2.name;
     const container2 = document.querySelector("#content2");
     container2.innerHTML = `
@@ -112,13 +118,13 @@ function players(){
     <tr><td> IMGM: ${player2.answerIMGM}</td></tr>
     <tr><td> ENSE: ${player2.answerENSE}</td></tr>
     `
-
-
+    
+    
     if (player3 === null){
-      const table3 = document.querySelector("#table3");
+        const table3 = document.querySelector("#table3");
         table3.style.display = "none"
     }else{
-      player3Name.innerHTML = player3.name
+        player3Name.innerHTML = player3.name
         const container3 = document.querySelector("#content3");
         container3.innerHTML = `
         <tr><td> INFO: ${player3.answerINFO}</td></tr>
@@ -146,10 +152,9 @@ function players(){
         <tr><td> ENSE: ${player4.answerENSE}</td></tr>
         `
     }
-    
-    
-    
+}
 
-
+async function addToPersonalStats(){
+   await updateStatistics();
 }
 export default StatPage;
