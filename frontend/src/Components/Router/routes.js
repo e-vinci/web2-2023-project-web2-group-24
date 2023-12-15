@@ -7,6 +7,7 @@ import PersonalStatsPage from '../Pages/PersonnalStatsPage';
 import StatsPage from '../Pages/StatPage';
 import LogOutPage from '../Pages/LogOutPage';
 import Question from '../Pages/Question';
+import Win from '../Pages/Win';
 
 
 const routes = {
@@ -19,6 +20,7 @@ const routes = {
   '/gameStats' : StatsPage,
   '/logOut': LogOutPage,
   '/question': Question,
+  '/win': Win,
 };
 
 export default routes;

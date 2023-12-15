@@ -1,7 +1,7 @@
-import anime from 'animejs/lib/anime.es';
+
 import { clearPage } from '../../utils/render';
-import Navigate from '../Router/Navigate';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import { addPlayer } from '../../models/player';
 
 const SetUpPage = () => {
   clearPage();
@@ -222,92 +222,9 @@ function attachChangeEventToP4() {
 
 function attachEventToSubmit() {
   sessionStorage.clear()
-  const form = document.querySelector('#setUpForm');
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name1 = document.querySelector('#inputPseudo1').value;
-    const name2 = document.querySelector('#inputPseudo2').value;
-    const check3 = document.querySelector('#checkboxP3');
-    const check4 = document.querySelector('#checkboxP4');
-    const player1 = JSON.stringify({
-      number: 1,
-      name: name1,
-      answerBIN: 0,
-      answerCOA: 0,
-      answerBIM: 0,
-      answerDIE: 0,
-      answerINF: 0,
-    });
-    sessionStorage.setItem('player1', player1)
-    sessionStorage.setItem('currentPlayer', player1)
-     
-    const player2 = JSON.stringify({
-      number: 2,
-      name: name2,
-      answerBIN: 0,
-      answerCOA: 0,
-      answerBIM: 0,
-      answerDIE: 0,
-      answerINF: 0,
-    });
-    sessionStorage.setItem('player2', player2)
-    if (check3.checked) {
-      const name3 = document.querySelector('#inputPseudo3').value;
-      const player3 = JSON.stringify({
-        number: 3,
-        name: name3,
-        answerBIN: 0,
-        answerCOS: 0,
-        answerBIM: 0,
-        answerDIE: 0,
-        answerINF: 0,
-      });
-      sessionStorage.setItem('player3', player3)
-    }
-    if (check4.checked) {
-      const name4 = document.querySelector('#inputPseudo4').value;
-      const player4 = JSON.stringify({
-        number: 4,
-        name: name4,
-        answerBIN: 0,
-        answerCOS: 0,
-        answerBIM: 0,
-        answerDIE: 0,
-        answerINF: 0,
-      });
-      sessionStorage.setItem('player4', player4)
-    }
-    
-    
-    animationButtonStart();
-  });
+  addPlayer()
 }
 
-function animationButtonStart() {
-  const progressLogEl = document.querySelector('#progressText');
-  const promiseEl = document.querySelector('#startGame');
 
-  const animation = anime
-    .timeline({
-      targets: promiseEl,
-      delay: 400,
-      duration: 600,
-      endDelay: 400,
-      easing: 'easeInOutSine',
-      update(anim) {
-        progressLogEl.innerHTML = `progress : ${Math.round(anim.progress)}%`;
-      },
-    })
-    .add({
-      translateX: 0,
-    });
-
-  animation.play();
-
-  animation.complete = () => {
-    Navigate('/game');
-  };
-}
 
 export default SetUpPage;

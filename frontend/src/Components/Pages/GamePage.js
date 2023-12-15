@@ -170,7 +170,7 @@ function renderWheel(){
       ctx.save();
       ctx.font = 'bold 40px Helvetica, Arial';
       const text = options[index]
-      localStorage.setItem('categorie', text)
+      sessionStorage.setItem('categorie', text)
       ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
       ctx.restore();
     }

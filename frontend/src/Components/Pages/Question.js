@@ -1,5 +1,5 @@
 
-import { nextPlayer } from '../../models/player';
+import { checkWin, nextPlayer } from '../../models/player';
 import getOneQuestion from '../../models/question';
 import { clearPage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
@@ -71,13 +71,14 @@ async function renderQuestion(){
       <span class ="mb-5 fs-3" id="answer" ></span>          
     </div>
     `
-    const categorie = localStorage.getItem('categorie');
+    const categorie = sessionStorage.getItem('categorie');
     renderQuestionDetail(categorie);
 
 
     const btnTrue = document.querySelector('#btnTrue');
     btnTrue.addEventListener('click', (e) => {
         e.preventDefault();
+        document.getElementById("btnFalse").style.visibility = "hidden";
         checkAnswer(btnTrue.value);
         setTimeout(() => {
             Navigate('/game')
@@ -87,6 +88,7 @@ async function renderQuestion(){
     const btnFalse = document.querySelector('#btnFalse');
     btnFalse.addEventListener('click', (e) => {
         e.preventDefault();
+        document.getElementById("btnTrue").style.visibility = "hidden";
         checkAnswer(btnFalse.value);
         setTimeout(() => {
             Navigate('/game')
@@ -108,8 +110,44 @@ async function renderQuestion(){
 
 function checkAnswer(answer){
     const spanAnswer = document.querySelector('#answer');
+    const categorie = sessionStorage.getItem('categorie');
+
     if (answer === localStorage.getItem('answer')){
+        const player = JSON.parse(sessionStorage.getItem('currentPlayer'));
+        if (categorie === 'INFO'){
+            const answerINFO = player.answerINFO + 1;
+            player.answerINFO = answerINFO;
+            sessionStorage.setItem('currentPlayer', JSON.stringify(player));
+        }
+        if (categorie === 'EDPH'){
+            const answerEDPH = player.answerEDPH + 1;
+            player.answerEDPH = answerEDPH;
+            sessionStorage.setItem('currentPlayer', JSON.stringify(player));
+        }
+        if (categorie === 'IMGM'){   
+            const answerIMGM = player.answerIMGM + 1;
+            player.answerBIM = answerIMGM;
+            sessionStorage.setItem('currentPlayer', JSON.stringify(player));
+        }
+         if (categorie === 'DIET'){
+            const answerDIET = player.answerDIET + 1;
+            player.answerDIET = answerDIET;
+            sessionStorage.setItem('currentPlayer', JSON.stringify(player));
+        }
+        if (categorie === 'INFI'){
+            const answerINFI = player.answerINFI + 1;
+            player.answerINFI = answerINFI;
+            sessionStorage.setItem('currentPlayer', JSON.stringify(player));
+        }
+        if (categorie === 'ENSE'){
+            const answerENSE = player.answerENSE + 1;
+            player.answerENSE = answerENSE;
+            sessionStorage.setItem('currentPlayer', JSON.stringify(player));
+        }
         spanAnswer.innerHTML=`C'est une bonne réponse !`
+        console.log('CHECKKKKKKK')
+       checkWin();
+
     }else{
         spanAnswer.innerHTML=`C'est une mauvaise réponse !`
         nextPlayer() 
