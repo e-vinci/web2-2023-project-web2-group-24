@@ -291,7 +291,6 @@ function players(){
     player4Stars.innerHTML='';
   }else{
     player4Name.innerHTML = player4.name
-    
     if(player4.answerINFO>0){
       const starINFO4 = document.querySelector("#starINFO4");
       starINFO4.style.color= "Salmon"
@@ -399,4 +398,4 @@ function stars(){
 }
 
 
-export {GamePage, players, renderTurn} ;   
+export {GamePage, players, renderTurn,stars} ;   
