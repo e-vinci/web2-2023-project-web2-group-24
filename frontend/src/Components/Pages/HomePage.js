@@ -1,7 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import anime from 'animejs/lib/anime.es';
-import { clearPage } from '../../utils/render';
+import { clearPage, renderImage } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import logoHEVinci from '../logoHEVinci.jpg';
 
 
 const HomePage = () => {
@@ -12,12 +13,13 @@ const HomePage = () => {
 
 function renderHomePage() {
   const main = document.querySelector('main');
-  main.innerHTML = `<div class="mt-2 pb-5">
+  main.innerHTML = `<div class="mt-2 pb-5 d-flex flex-column align-items-center">
   <div class="container-fluid d-flex justify-content-center" style="padding-top: 5%;">
     <h1 class="text-center text-primary display-1">
       Trivial Vinci
     </h1>
   </div>
+  <div id="img" class="mt-5"></div>
 
   <div class="align-middle text-center" style="padding-top: 5%;" >
     <div class="d-flex justify-content-center">
@@ -52,6 +54,7 @@ function renderHomePage() {
   </div>
 </div>
   `;
+  renderImage(logoHEVinci);
 }
 
 function launchButtonPlayAnimation() {
