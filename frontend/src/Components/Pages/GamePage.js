@@ -179,27 +179,6 @@ function renderWheel(){
     drawRouletteWheel();
 }
 
-
-/*
-function renderQuestion(){
-  const question = document.querySelector('#questionWrapper');
-  question.innerHTML=`
-  <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
-    <div class = "card-header fs-1 p-4" >
-    <p id="categorie"></p>
-    </div>
-    <div class = "card-body p-5">
-      <p class = "card-text fs-1 p-5 "> [QUESTION]</p>
-        <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
-        <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
-      
-    </div>           
-  </div>
-  `
-}
-*/
-
-
 function players(){
     const player1Name = document.querySelector("#player1Name");
     const name = getPlayers(1);

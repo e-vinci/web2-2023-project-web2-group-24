@@ -1,6 +1,8 @@
 
 import getOneQuestion from '../../models/question';
 import { clearPage } from '../../utils/render';
+import Navigate from '../Router/Navigate';
+
 import { players } from './GamePage';
 
 const Question = async () => {
@@ -13,12 +15,7 @@ function renderQuestionPage(){
 const main = document.querySelector('main');
 main.innerHTML =`
 <div class="container" id="questionWrapper" style: "z-index: 10"></div>
-        <div class="mb-5" style = "text-align:center;">
-            <canvas id="canvas" width="500" height="500"></canvas>
-            <div>
-              <input type="button" class = "btn btn-primary btn-lg" value="spin" style="float:center;" id='spin' />
-            </div>
-        </div>
+        
         <div class="position relative p-5">
             <div class="position-absolute top-0 start-0 mt-5">
                 <div class="card mt-4">
@@ -68,24 +65,30 @@ async function renderQuestion(){
           <button type="button" class="btn btn-outline-success fs-2 m-5" id="btnTrue" value="true">VRAI</button>
           <button type="button" class="btn btn-outline-danger fs-2 m-5" id = "btnFalse" value="false">FAUX</button>
       </div>
-      <span id="answer"></span>          
+      <span class ="mb-5 fs-3" id="answer" ></span>          
     </div>
     `
+    const categorie = localStorage.getItem('categorie');
+    renderQuestionDetail(categorie);
+
+
     const btnTrue = document.querySelector('#btnTrue');
     btnTrue.addEventListener('click', (e) => {
         e.preventDefault();
         checkAnswer(btnTrue.value);
+        setTimeout(() => {
+            Navigate('/game')
+          }, 2000);
     })
 
     const btnFalse = document.querySelector('#btnFalse');
     btnFalse.addEventListener('click', (e) => {
         e.preventDefault();
         checkAnswer(btnFalse.value);
+        setTimeout(() => {
+            Navigate('/game')
+          }, 2000);
     })
-    
-    const categorie = localStorage.getItem('categorie');
-    renderQuestionDetail(categorie);
-    
     
 
   }
@@ -108,6 +111,12 @@ function checkAnswer(answer){
 }
 else{
     spanAnswer.innerHTML=`C'est une mauvaise réponse !`
-}}
+}
+
+
+  
+}
+
+
   
   export default Question;
