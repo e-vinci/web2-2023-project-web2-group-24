@@ -1,4 +1,6 @@
 import { clearPage, hideFooter} from '../../utils/render';
+import Navigate from '../Router/Navigate';
+
 
 const StatPage = () => {
     clearPage();
@@ -62,9 +64,17 @@ function renderStatPage(){
 
         </div>
     </div>
+    <div class="d-flex flex-column align-items-center justify-content-center mt-5">
+<input type="button" class = "btn btn-primary btn-lg" value="Rejouer" style="float:center;" id='replay' />
+</div>
     `
     hideFooter()
     players()
+
+    const btn = document.querySelector('#replay');
+    btn.addEventListener('click', () => {
+        Navigate('/setup');
+    });
 }
 
 function players(){

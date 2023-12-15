@@ -26,7 +26,7 @@ function renderWinPage(){
 
 </div>
 <div class="d-flex flex-column align-items-center justify-content-center mt-5">
-<input id="toStats"type="button" class = "btn btn-primary btn-lg" value="Aller aux statistiques de partie" style="float:center;" id='replay' />
+<input id="toStats"type="button" class = "btn btn-primary btn-lg" value="Aller aux statistiques de partie" style="float:center;"/>
 </div>
 `
 hideFooter()
