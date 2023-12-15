@@ -57,8 +57,8 @@ async function renderLoginPage() {
                             <div class="px-5 py-4">
                                 <button type="submit" class="btn btn-primary btn-lg" id="connect">Connexion</button>
                             </div>
-                            
-    
+                            <div class="px-5 py-4" id="error"></div>
+
                         </div>
                     </form>
     
@@ -82,7 +82,8 @@ form.addEventListener('submit', async (e) => {
     
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd').value;
-   
+    const error = document.querySelector('#error');
+    
     const options = {
         method: 'POST',
         body: JSON.stringify({
@@ -94,20 +95,22 @@ form.addEventListener('submit', async (e) => {
         },
     }
     const user = await login(options);
+    
     if(user === null){
-        form.innerHTML += `<div class="row d-flex justify-content-center">
+        error.innerHTML = `<div class="row d-flex justify-content-center">
             <div class="col-xl-6 col-lg-8 col-md-10 col-sm-12">
                 <div class="bg-danger text-white text-center p-3 rounded">
                     <p>Cet utilisateur n'existe pas !</p>
                 </div>
             </div>
         </div>`;
-        return;
     }
-
-    setAuthenticatedUser(user);
+    else{
+       setAuthenticatedUser(user);
     Navbar();
-    Navigate('/');
+    Navigate('/'); 
+    }
+    
 });
 
 }
