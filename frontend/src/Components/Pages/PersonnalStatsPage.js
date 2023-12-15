@@ -1,4 +1,4 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, hideFooter } from '../../utils/render';
 import { getAllStatistics } from '../../models/statistic';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
@@ -10,6 +10,7 @@ const PersonnalStatsPage = async () => {
     clearPage();
   await renderPersonalStatsPage();   
   }
+  
 };
 
 async function renderPersonalStatsPage(){
@@ -53,6 +54,7 @@ async function renderPersonalStatsPage(){
   </div>
   </div>
   `
+  hideFooter();
   await renderStats();
 }
 

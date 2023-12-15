@@ -1,4 +1,4 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, hideFooter } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import { setAuthenticatedUser } from "../../utils/auths";
 import { login } from '../../models/user';
@@ -7,6 +7,7 @@ import Navbar from '../Navbar/Navbar';
 const LoginPage = async () => {
     clearPage();
     await renderLoginPage();
+    hideFooter();
 };
 
 async function renderLoginPage() {

@@ -1,4 +1,4 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, hideFooter} from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import renderPrivacyText from '../privacyAccord';
 import {register} from '../../models/user';
@@ -6,6 +6,7 @@ import {register} from '../../models/user';
 const RegisterPage = async () => {
     clearPage();
     await renderRegisterPage();
+    hideFooter();   
 };
 
 async function renderRegisterPage() {

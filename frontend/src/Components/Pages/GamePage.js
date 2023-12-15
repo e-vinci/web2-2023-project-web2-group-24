@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 
-import { clearPage } from '../../utils/render';
+import { clearPage, hideFooter } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 import { renderTurn } from '../../models/player';
 
@@ -54,6 +54,7 @@ function renderGamePage(){
         </div>
     }
     ` 
+    hideFooter()
     players()
     renderWheel()
     renderTurn()

@@ -1,7 +1,7 @@
 
 import { checkWin, nextPlayer } from '../../models/player';
 import getOneQuestion from '../../models/question';
-import { clearPage } from '../../utils/render';
+import { clearPage, hideFooter } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 
 import { players, renderTurn } from './GamePage';
@@ -49,7 +49,8 @@ main.innerHTML =`
             </div>
         </div>
     }
-    `     
+    `
+    hideFooter()     
     players()  
     renderQuestion()
     renderTurn()
@@ -60,13 +61,13 @@ async function renderQuestion(){
     const question = document.querySelector('#questionWrapper');
     question.innerHTML=`
     <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
-      <div class = "card-header fs-1 p-4" >
+      <div class = "card-header fs-2 p-6" >
       <span id="categorie"></span>
       </div>
       <div class = "card-body p-5">
-        <p class = "card-text fs-2 p-5 " id="question"></p>
-          <button type="button" class="btn btn-outline-success fs-2 m-5" id="btnTrue" value="true">VRAI</button>
-          <button type="button" class="btn btn-outline-danger fs-2 m-5" id = "btnFalse" value="false">FAUX</button>
+        <p class = "card-text fs-3 p-5 " id="question"></p>
+          <button type="button" class="btn btn-outline-success fs-3 m-5" id="btnTrue" value="true">VRAI</button>
+          <button type="button" class="btn btn-outline-danger fs-3 m-5" id = "btnFalse" value="false">FAUX</button>
       </div>
       <span class ="mb-5 fs-3" id="answer" ></span>          
     </div>

@@ -1,5 +1,5 @@
 
-import { clearPage } from '../../utils/render';
+import { clearPage} from '../../utils/render';
 import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import { addPlayer } from '../../models/player';
 

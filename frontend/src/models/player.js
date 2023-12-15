@@ -143,6 +143,7 @@ function checkWin(){
     if (playerToVerify.answerINFO >= 1 && playerToVerify.answerCOSP >= 1 && 
         playerToVerify.answerIMGM >=1 && playerToVerify.answerDIET >=1 && 
         playerToVerify.answerINFI >=1 && playerToVerify.answerENSE >=1){
+        sessionStorage.setItem('winner', JSON.stringify(playerToVerify));
         Navigate('/win')
     }
 }

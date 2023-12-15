@@ -1,4 +1,4 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, hideFooter} from '../../utils/render';
 
 const StatPage = () => {
     clearPage();
@@ -63,6 +63,7 @@ function renderStatPage(){
         </div>
     </div>
     `
+    hideFooter()
     players()
 }
 
