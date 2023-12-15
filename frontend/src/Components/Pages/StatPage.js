@@ -20,25 +20,25 @@ function renderStatPage(){
                             <th id="player1Name"></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="content1">
                         <!-- Table content goes here -->
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="info1"></td>
                         </tr>
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="diet1"></td>
                         </tr>
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="infi1"></td>
                         </tr>
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="cosp1"></td>
                         </tr>
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="imgm1"></td>
                         </tr>
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="ense1"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -55,7 +55,7 @@ function renderStatPage(){
                     <tbody>
                         <!-- Table content goes here -->
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="info2">info: 8/10</td>
                         </tr>
                         <tr>
                             <td>info: 8/10</td>
@@ -77,7 +77,7 @@ function renderStatPage(){
             </div>
 
             <!-- Table 3 -->
-            <div class="col-md-3">
+            <div class="col-md-3" id="table3">
                 <table class="table table-bordered table-danger">
                     <thead>
                         <tr>
@@ -87,7 +87,7 @@ function renderStatPage(){
                     <tbody>
                         <!-- Table content goes here -->
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="info4">info: 8/10</td>
                         </tr>
                         <tr>
                             <td>info: 8/10</td>
@@ -110,7 +110,7 @@ function renderStatPage(){
 
             <!-- Table 4 -->
             <div class="col-md-3">
-                <table class="table table-bordered table-warning">
+                <table class="table table-bordered table-warning" id="table4">
                     <thead>
                         <tr>
                             <th id="player4Name"></th>
@@ -119,7 +119,7 @@ function renderStatPage(){
                     <tbody>
                         <!-- Table content goes here -->
                         <tr>
-                            <td>info: 8/10</td>
+                            <td id="info4">info: 8/10</td>
                         </tr>
                         <tr>
                             <td>info: 8/10</td>
@@ -147,28 +147,44 @@ function renderStatPage(){
 }
 
 function players(){
+    /* Récupère tous les endroits où il un nom a display */
     const player1Name = document.querySelector("#player1Name");
-    const player1 = JSON.parse(sessionStorage.getItem('player1'));
-    player1Name.innerHTML = player1.name;
-    
     const player2Name = document.querySelector("#player2Name");
-    const player2 = JSON.parse(sessionStorage.getItem('player2'))
-    player2Name.innerHTML = player2.name;
     const player3Name = document.querySelector("#player3Name");
+    const player4Name = document.querySelector("#player4Name");
+
+    /* Récupère les joueurs du sessionStorage */
+    const player1 = JSON.parse(sessionStorage.getItem('player1'));
+    const player2 = JSON.parse(sessionStorage.getItem('player2'));
     const player3 = JSON.parse(sessionStorage.getItem('player3'));
+    const player4 = JSON.parse(sessionStorage.getItem('player4'));
+
+    /* Affiche les noms des joueurs dans les bonnes cases */
+    player1Name.innerHTML = player1.name;
+    player2Name.innerHTML = player2.name;
+
     if (player3 === null){
-      player3Name.innerHTML = "Joueur 3"
+      const table3 = document.querySelector("#table3");
+        table3.style.display = "none"
     }else{
       player3Name.innerHTML = player3.name
     }
     
-    const player4Name = document.querySelector("#player4Name");
-    const player4 = JSON.parse(sessionStorage.getItem('player4'))
+    
     if (player4 === null){
-      player4Name.innerHTML = "Joueur 4"
+        const table4 = document.querySelector("#table4");
+        table4.style.display = "none"
     }else{
-      player4Name.innerHTML = player4.name
+        player4Name.innerHTML = player4.name
     }
-  
-  }
+    const container = document.querySelector("#content1");
+    container.innerHTML = `
+    <tr><td> INFO: ${player1.answerINFO}</td></tr>
+    <tr><td> DIET: ${player1.answerDIET}</td></tr>
+    <tr><td> INFI: ${player1.answerINFI}</td></tr>
+    <tr><td> COSP: ${player1.answerCOSP}</td></tr>
+    <tr><td> IMGM: ${player1.answerIMGM}</td></tr>
+    <tr><td> ENSE: ${player1.answerENSE}</td></tr>`
+    
+}
 export default StatPage;

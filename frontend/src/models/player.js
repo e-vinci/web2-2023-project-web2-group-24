@@ -14,7 +14,7 @@ function addPlayer() {
             number: 1,
             name: name1,
             answerINFO: 0,
-            answerEDPH: 0,
+            answerCOSP: 0,
             answerIMGM: 0,
             answerDIET: 0,
             answerINFI: 0,
@@ -26,12 +26,12 @@ function addPlayer() {
         const player2 = JSON.stringify({
             number: 2,
             name: name2,
-            answerINFO: 1,
-            answerEDPH: 1,
-            answerIMGM: 1,
-            answerDIET: 1,
-            answerINFI: 1,
-            answerENSE: 1,
+            answerINFO: 0,
+            answerCOSP: 0,
+            answerIMGM: 0,
+            answerDIET: 0,
+            answerINFI: 0,
+            answerENSE: 0,
         });
         sessionStorage.setItem('player2', player2)
         if (check3.checked) {
@@ -40,7 +40,7 @@ function addPlayer() {
                 number: 3,
                 name: name3,
                 answerINFO: 0,
-                answerEDPH: 0,
+                answerCOSP: 0,
                 answerIMGM: 0,
                 answerDIET: 0,
                 answerINFI: 0,
@@ -55,7 +55,7 @@ function addPlayer() {
                 number: 4,
                 name: name4,
                 answerINFO: 0,
-                answerEDPH: 0,
+                answerCOSP: 0,
                 answerIMGM: 0,
                 answerDIET: 0,
                 answerINFI: 0,
@@ -116,28 +116,31 @@ function nextPlayer(){
     const player4 = JSON.parse(sessionStorage.getItem('player4'));
     
     if (currentPlayer.number === 1) {
+        sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
         sessionStorage.setItem('currentPlayer', JSON.stringify(player2));
     } else if (currentPlayer.number === 2) {
+        sessionStorage.setItem('currentPlayer', JSON.stringify(player2));
         if (player3 === null) {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
         } else {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player3));
         }
     } else if (currentPlayer.number === 3) {
+        sessionStorage.setItem('currentPlayer', JSON.stringify(player3));
         if (player4 === null) {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
         } else {
             sessionStorage.setItem('currentPlayer', JSON.stringify(player4));
         }
     } else if (currentPlayer.number === 4) {
+        sessionStorage.setItem('currentPlayer', JSON.stringify(player4));
         sessionStorage.setItem('currentPlayer', JSON.stringify(player1));
     }
 }
 
 function checkWin(){
     const playerToVerify = JSON.parse(sessionStorage.getItem('currentPlayer'));
-    console.log(`YOOOOOO ${playerToVerify}`);
-    if (playerToVerify.answerINFO >= 1 && playerToVerify.answerEDPH >= 1 && 
+    if (playerToVerify.answerINFO >= 1 && playerToVerify.answerCOSP >= 1 && 
         playerToVerify.answerIMGM >=1 && playerToVerify.answerDIET >=1 && 
         playerToVerify.answerINFI >=1 && playerToVerify.answerENSE >=1){
         Navigate('/win')

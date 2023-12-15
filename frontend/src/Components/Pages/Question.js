@@ -119,9 +119,9 @@ function checkAnswer(answer){
             player.answerINFO = answerINFO;
             sessionStorage.setItem('currentPlayer', JSON.stringify(player));
         }
-        if (categorie === 'EDPH'){
-            const answerEDPH = player.answerEDPH + 1;
-            player.answerEDPH = answerEDPH;
+        if (categorie === 'COSP'){
+            const answerCOSP = player.answerCOSP + 1;
+            player.answerCOSP = answerCOSP;
             sessionStorage.setItem('currentPlayer', JSON.stringify(player));
         }
         if (categorie === 'IMGM'){   

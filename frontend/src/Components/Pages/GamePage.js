@@ -65,7 +65,7 @@ function renderGamePage(){
 
 
 function renderWheel(){
-    const options = ['INFO', 'DIET', "INFI", 'EDPH', 'IMGM', 'ENSE'];
+    const options = ['INFO', 'DIET', "INFI", 'COSP', 'IMGM', 'ENSE'];
 
     const colors = ["Salmon", "Thistle", "Yellow", "LimeGreen", "SkyBlue", "violet"]
     
