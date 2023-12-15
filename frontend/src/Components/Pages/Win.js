@@ -5,10 +5,11 @@ const Win = async () => {
     renderWinPage();
   };
 
+  
   function renderWinPage(){
     const main = document.querySelector('main');
     main.innerHTML =`HEYYY BIEN JOUÉ !`    
   }
 
-  
+
 export default Win;

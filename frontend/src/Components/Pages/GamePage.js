@@ -196,7 +196,7 @@ function players(){
   const player3Name = document.querySelector("#player3Name");
   const player3 = JSON.parse(sessionStorage.getItem('player3'));
   if (player3 === null){
-    player3Name.innerHTML = "Joueur 3"
+    player3Name.innerHTML = "Non actif"
   }else{
     player3Name.innerHTML = player3.name
   }
@@ -204,7 +204,7 @@ function players(){
   const player4Name = document.querySelector("#player4Name");
   const player4 = JSON.parse(sessionStorage.getItem('player4'))
   if (player4 === null){
-    player4Name.innerHTML = "Joueur 4"
+    player4Name.innerHTML = "Non actif"
   }else{
     player4Name.innerHTML = player4.name
   }
