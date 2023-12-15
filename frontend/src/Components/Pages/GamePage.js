@@ -73,8 +73,6 @@ function renderWheel(){
     
     let ctx;
 
-    
-    // document.getElementById("spin").addEventListener("click", spin);
     document.getElementById("spin").addEventListener("click", () => {
       spin();
       setTimeout(() => {
@@ -166,6 +164,7 @@ function renderWheel(){
       ctx.save();
       ctx.font = 'bold 30px Helvetica, Arial';
       const text = options[index]
+      localStorage.setItem('categorie', text)
       ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
       ctx.restore();
     }

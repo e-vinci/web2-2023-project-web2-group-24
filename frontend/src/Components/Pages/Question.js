@@ -56,7 +56,7 @@ main.innerHTML =`
 }
 
 
-function renderQuestion(){
+async function renderQuestion(){
     const question = document.querySelector('#questionWrapper');
     question.innerHTML=`
     <div class = "card text-center opacity-70 border-primary d-grid col-6 mx-auto" >
@@ -65,20 +65,49 @@ function renderQuestion(){
       </div>
       <div class = "card-body p-5">
         <p class = "card-text fs-2 p-5 " id="question"></p>
-          <button type="button" class="btn btn-outline-success fs-2 m-5">VRAI</button>
-          <button type="button" class="btn btn-outline-danger fs-2 m-5" >FAUX</button>
-        
-      </div>           
+          <button type="button" class="btn btn-outline-success fs-2 m-5" id="btnTrue" value="true">VRAI</button>
+          <button type="button" class="btn btn-outline-danger fs-2 m-5" id = "btnFalse" value="false">FAUX</button>
+      </div>
+      <span id="answer"></span>          
     </div>
     `
-    renderQuestionDetail();
+    const btnTrue = document.querySelector('#btnTrue');
+    btnTrue.addEventListener('click', (e) => {
+        e.preventDefault();
+        checkAnswer(btnTrue.value);
+    })
+
+    const btnFalse = document.querySelector('#btnFalse');
+    btnFalse.addEventListener('click', (e) => {
+        e.preventDefault();
+        checkAnswer(btnFalse.value);
+    })
+    
+    const categorie = localStorage.getItem('categorie');
+    renderQuestionDetail(categorie);
+    
+    
+
   }
 
-  async function renderQuestionDetail(){
+  
+  async function renderQuestionDetail(categorie){
     const spanCat = document.querySelector('#categorie');
     const spanQuestion = document.querySelector('#question');
-    const cat = await getOneQuestion('ENSE');
+    const cat = await getOneQuestion(categorie);
     spanCat.innerHTML=`${cat.nom_categorie}`
     spanQuestion.innerHTML=`${cat.question}`
+    localStorage.setItem('answer', cat.valeur)
   }
+
+function checkAnswer(answer){
+    const spanAnswer = document.querySelector('#answer');
+    
+  if (answer === localStorage.getItem('answer')){
+    spanAnswer.innerHTML=`C'est une bonne réponse !`
+}
+else{
+    spanAnswer.innerHTML=`C'est une mauvaise réponse !`
+}}
+  
   export default Question;

@@ -9,4 +9,6 @@ async function getOneQuestion(category) {
         throw err;
       }
 }
+
+
 export default  getOneQuestion;
