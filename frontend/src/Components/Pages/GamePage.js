@@ -80,6 +80,7 @@ function renderWheel(){
 
     document.getElementById("spin").addEventListener("click", () => {
       spin();
+      document.getElementById("spin").style.visibility = "hidden";
       setTimeout(() => {
         Navigate('/question')
       }, 5000); 
