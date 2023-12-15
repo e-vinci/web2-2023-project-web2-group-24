@@ -4,7 +4,7 @@ import getOneQuestion from '../../models/question';
 import { clearPage, hideFooter } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 
-import { players, renderTurn } from './GamePage';
+import { players, renderTurn, stars } from './GamePage';
 
 const Question = async () => {
     clearPage();
@@ -23,6 +23,8 @@ main.innerHTML =`
                 <div class="card mt-4">
                     <div class = "card-body bg-info">
                         <h5 id="player1Name" class="card-title">Joueur 1 </h5>
+                        <div id='stars1'>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -30,6 +32,8 @@ main.innerHTML =`
                 <div class="card mt-4">
                     <div class = "card-body bg-success">
                         <h5 id="player2Name" class="card-title">Joueur 2 </h5>
+                        <div id='stars2'>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,6 +41,8 @@ main.innerHTML =`
                 <div class="card">
                     <div class = "card-body bg-danger">
                         <h5 id="player3Name" class="card-title">Joueur 3 </h5>
+                        <div id='stars3'>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,6 +50,8 @@ main.innerHTML =`
                 <div class="card mt-4">
                     <div class = "card-body bg-warning">
                         <h5 id="player4Name" class="card-title">Joueur 4 </h5>
+                        <div id='stars4'>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,6 +59,7 @@ main.innerHTML =`
     }
     `
     hideFooter()     
+    stars()
     players()  
     renderQuestion()
     renderTurn()
