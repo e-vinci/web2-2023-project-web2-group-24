@@ -1,4 +1,3 @@
-
 import { checkWin, nextPlayer } from '../../models/player';
 import getOneQuestion from '../../models/question';
 import { clearPage, hideFooter } from '../../utils/render';
@@ -87,30 +86,22 @@ async function renderQuestion(){
     renderQuestionDetail(categorie);
 
 
-    const btnTrue = document.querySelector('#btnTrue');
-    btnTrue.addEventListener('click', (e) => {
-        e.preventDefault();
-document.getElementById("btnFalse").style.visibility = "hidden";
-checkAnswer(btnTrue.value);
-setTimeout(() => {
-    if (!checkWin()) {
-        Navigate('/game')
-    }
-}, 2000);
-    })
+const btnTrue = document.querySelector('#btnTrue');
+btnTrue.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById("btnFalse").style.visibility = "hidden";
+    checkAnswer(btnTrue.value);
+    checkWin()
+})
 
-    const btnFalse = document.querySelector('#btnFalse');
-    btnFalse.addEventListener('click', (e) => {
-        e.preventDefault();
-document.getElementById("btnTrue").style.visibility = "hidden";
-checkAnswer(btnFalse.value);
-setTimeout(() => {
-    if (!checkWin()) {
-        Navigate('/game')
-    }
-}, 2000);
-    })
-    
+const btnFalse = document.querySelector('#btnFalse');
+btnFalse.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById("btnTrue").style.visibility = "hidden";
+    checkAnswer(btnFalse.value);
+    checkWin()
+})
+
 
   }
 
@@ -162,15 +153,18 @@ function checkAnswer(answer){
             sessionStorage.setItem('currentPlayer', JSON.stringify(player));
         }
         spanAnswer.innerHTML=`C'est une bonne réponse !`
-       
-
+        
         if (checkWin()=== true){
-            
             Navigate('/win')
-        };
-
-    }else{
+        }else{
+            setTimeout(() => {
+                Navigate('/game')
+            }, 2000)}
+        } else{
         spanAnswer.innerHTML=`C'est une mauvaise réponse !`
+        setTimeout(() => {
+            Navigate('/game')
+        }, 2000);
         nextPlayer() 
     }  
 }
