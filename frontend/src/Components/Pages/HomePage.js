@@ -2,7 +2,6 @@
 import anime from 'animejs/lib/anime.es';
 import { clearPage} from '../../utils/render';
 import Navigate from '../Router/Navigate';
-import logoHEVinci from '../../img/logoHEVinci.jpg';
 
 
 const HomePage = () => {
@@ -19,7 +18,6 @@ function renderHomePage() {
       Trivial Vinci
     </h1>
   </div>
-  <div id="img" class="mt-5"></div>
 
   <div class="align-middle text-center" style="padding-top: 5%;" >
     <div class="d-flex justify-content-center">
@@ -52,7 +50,6 @@ function renderHomePage() {
   </div>
 </div>
   `;
-  renderImage(logoHEVinci);
 }
 
 function launchButtonPlayAnimation() {
@@ -80,11 +77,6 @@ function launchButtonPlayAnimation() {
   };
 
 };
-
-function renderImage(url){
-  const img = document.querySelector('#img');
-  img.innerHTML += `<img src="${url}" height="100">`
-}
 
 
 export default HomePage;
