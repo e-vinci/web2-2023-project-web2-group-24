@@ -6,11 +6,9 @@ import { updateStatistics } from '../../models/statistic';
 const StatPage = async () => {
     clearPage();
     renderStatPage();
-    if (!isAuthenticated()){
-        Navigate('/connexion')
-    } else{
-     await addToPersonalStats();
-    }
+    if (isAuthenticated()){
+        await addToPersonalStats();
+    } 
 }
 
 function renderStatPage(){
