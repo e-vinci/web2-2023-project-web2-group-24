@@ -1,6 +1,6 @@
 import { clearPage, hideFooter} from '../../utils/render';
 import Navigate from '../Router/Navigate';
-import { isAuthenticated } from '../../utils/auths';
+import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import { updateStatistics } from '../../models/statistic';
 
 const StatPage = async () => {
@@ -153,6 +153,70 @@ function players(){
 }
 
 async function addToPersonalStats(){
-   await updateStatistics();
+    const authenticatedPlayer = getAuthenticatedUser();
+    const player = JSON.parse(sessionStorage.getItem('player1'));
+    const winner = JSON.parse(sessionStorage.getItem('winner'));
+    let win = false;
+    if(player.name === winner.name) {
+        win = true;
+    }
+    const nbAnswer = getNbAnswer(player);
+    console.log(nbAnswer);
+    const favoriteCategory = getFavoriteCategory(player);
+    const options = {
+        method: 'PUT',
+            body: JSON.stringify({
+                nbQuestionsAsked: nbAnswer,
+                gameWin: win,
+                favoriteCategory,
+            }),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': authenticatedPlayer.token,
+            },
+    }
+   await updateStatistics(authenticatedPlayer.id, options);
+}
+
+function getNbAnswer(player) {
+    return parseInt(player.answerCOSP, 10) + parseInt(player.answerDIET, 10) + parseInt(player.answerENSE,10) + parseInt(player.answerIMGM, 10) + parseInt(player.answerINFI,10) + parseInt(player.answerINFO, 10);
+}
+
+function getFavoriteCategory(player){
+    let favoriteCategory = "INFO";
+    const nbINFO = parseInt(player.answerINFO, 10);
+    const nbDIET = parseInt(player.answerDIET, 10);
+    const nbCOSP = parseInt(player.answerCOSP, 10);
+    const nbENSE = parseInt(player.answerENSE, 10);
+    const nbIMGM = parseInt(player.answerIMGM, 10);
+    const nbINFI = parseInt(player.answerINFI, 10);
+    let nbFavoriteCategory = nbINFO;
+
+    if(nbFavoriteCategory < nbCOSP){
+        favoriteCategory = "COSP";
+        nbFavoriteCategory = nbCOSP;
+    }
+
+    if(nbFavoriteCategory < nbDIET) {
+        favoriteCategory = "DIET";
+        nbFavoriteCategory = nbDIET;
+    }
+
+    if(nbFavoriteCategory< nbENSE){
+        favoriteCategory = "ENSE";
+        nbFavoriteCategory = nbENSE;
+    }
+
+    if(nbFavoriteCategory < nbIMGM){
+        favoriteCategory = "IMGM";
+        nbFavoriteCategory = nbIMGM;
+    }
+
+    if(nbFavoriteCategory< nbINFI){
+        favoriteCategory = "INFI";
+        nbFavoriteCategory = nbINFI;
+    }
+
+return favoriteCategory;
 }
 export default StatPage;
