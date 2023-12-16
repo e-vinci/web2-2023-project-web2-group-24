@@ -19,7 +19,7 @@ function renderGamePage(){
         <div class="mb-5" style = "text-align:center;">
             <canvas id="canvas" width="500" height="500"></canvas>
             <div>
-              <input type="button" class = "btn btn-primary btn-lg" value="spin" style="float:center;" id='spin' />
+              <input type="button" class = "btn btn-primary btn-lg" value="TOURNER LA ROUE!" style="float:center;" id='spin' />
             </div>
         </div>
         <div class="position relative p-5">
