@@ -71,15 +71,14 @@ function renderGamePage(){
 
 
 
-
-/*************************************************************************************** 
-*    Title: <Roulette Wheel> 
-*    Author: <Barney Parker> 
-*    Date: <December 4, 2014> 
-*    Code version: <1.0> 
-*    Availability: <https://codepen.io/barney-parker/pen/OPyYqy> 
-* 
-***************************************************************************************/ 
+// ************************************************************************************* 
+// Title: <Roulette Wheel> 
+// Author: <Barney Parker> 
+// Date: <December 4, 2014> 
+// Code version: <1.0> 
+// Availability: <https://codepen.io/barney-parker/pen/OPyYqy> 
+// 
+// *************************************************************************************/
 function renderWheel(){
     const options = ['INFO', 'DIET', "INFI", 'COSP', 'IMGM', 'ENSE'];
 
