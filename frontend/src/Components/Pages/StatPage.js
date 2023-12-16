@@ -5,11 +5,19 @@ import { updateStatistics } from '../../models/statistic';
 
 const StatPage = async () => {
     clearPage();
-    renderStatPage();
+    
+    if(sessionStorage.length === 0){
+        Navigate('/setup');
+    } else{
+        renderStatPage();
+
     if (isAuthenticated()){
         await addToPersonalStats();
     } 
 }
+}
+
+    
 
 function renderStatPage(){
     const main = document.querySelector('main');

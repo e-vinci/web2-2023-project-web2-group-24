@@ -13,12 +13,12 @@ function addPlayer() {
         const player1 = JSON.stringify({
             number: 1,
             name: name1,
-            answerINFO: 50,
-            answerCOSP: 1,
-            answerIMGM: 10,
-            answerDIET: 10,
-            answerINFI: 10,
-            answerENSE: 14,
+            answerINFO: 0,
+            answerCOSP: 0,
+            answerIMGM: 0,
+            answerDIET: 0,
+            answerINFI: 0,
+            answerENSE: 0,
         });
         sessionStorage.setItem('player1', player1)
         sessionStorage.setItem('currentPlayer', player1)
