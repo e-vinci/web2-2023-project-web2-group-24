@@ -26,7 +26,7 @@ async function renderPersonalStatsPage(){
   <tbody>
   
   <tr>
-  <th scope="row">Nombre de questions posées</th>
+  <th scope="row">Nombre de questions répondues</th>
   <td id = "nb_questions"></td>
   
   <tr>

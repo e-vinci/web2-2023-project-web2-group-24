@@ -40,9 +40,10 @@ function renderHomePage() {
     Le but du jeu est simple : </br>
     Soyez le premier joueur à repondre correctement a une question de chaque catégorie afin d'obtenir les 6 étoiles de couleurs<br>
     et remporter la partie !</br>
+    Le jeu comporte 6 catégorie. Informatique (INFO), Diétique (DIET), Infirmier (INFI), Coaching sportif (COSP), Imagerie (IMGM), Enseignant (ENSE).<br> 
     comment jouer ?</br>
     Un partie se joue à jusqu'a 4 joueurs sur le même ordinateur lorsque votre tour arrive prenez la main sur l'ordinateur et faites tourner la roue puis répondez a la question.</br>
-    Si vous trouvez la bonne réponse, vous pouvez rejouer sinon c'est au tour du joueur suivant 
+    Si vous trouvez la bonne réponse, vous pouvez rejouer sinon c'est au tour du joueur suivant.
   </p>
   </div>
   <div class="container-fluid d-flex justify-content-center">
