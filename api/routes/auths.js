@@ -1,5 +1,6 @@
 const express = require('express');
-const { register, login } = require('../models/users');
+const { register, login, deleteOneUser } = require('../models/users');
+const { authorize } = require('../utils/auths');
 
 const router = express.Router();
 
@@ -30,6 +31,16 @@ router.post('/login', async (req, res) => {
   if (!authenticatedUser) return res.sendStatus(401); // 401 Unauthorized
 
   return res.json(authenticatedUser);
+});
+
+// route to delete one user with his id
+router.delete('/:id', authorize, async (req, res) => {
+  const id = parseInt(req.params.id, 10);
+  const deletedUser = await deleteOneUser(id);
+  if (!deletedUser) {
+    return res.sendStatus(404);
+  }
+  return res.json(deletedUser);
 });
 
 module.exports = router;

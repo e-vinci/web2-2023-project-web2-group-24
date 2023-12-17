@@ -1,7 +1,10 @@
 import { clearPage, hideFooter } from '../../utils/render';
 import { getAllStatistics } from '../../models/statistic';
-import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import { clearAuthenticatedUser, getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
+import { deletePrivacy } from '../../utils/privacy';
+import { deleteAuthenticatedUser } from '../../models/user';
+import Navbar from '../Navbar/Navbar';
 
 const PersonnalStatsPage = async () => {
   if (!isAuthenticated()){
@@ -52,9 +55,17 @@ async function renderPersonalStatsPage(){
   </div>
   </div>
   </div>
+  <div class="container d-flex justify-content-center pt-5">
+    <button id="deleteRGPD" class="btn btn-secondary">Retirer son consentement sur les règles RGPD</button>
+  </div>
+
+  <div class="container d-flex justify-content-center pb-5 pt-1">
+    <p class="text-danger">Cette action entraînera la suppression de votre compte ainsi que de ses données !</p>
+  </div>
   `
   hideFooter();
   await renderStats();
+  attachEventListenerToDeleteRGPDButton();
 }
 
 async function renderStats() {
@@ -77,6 +88,24 @@ async function renderStats() {
   tdNbVictoires.innerHTML = `${stats.nb_victoire} parties remportées`
   tdCategorie.innerHTML = `${stats.nom_categorie}`
 
+}
+
+async function attachEventListenerToDeleteRGPDButton() {
+  const button = document.querySelector('#deleteRGPD');
+  const authenticatedUser = getAuthenticatedUser();
+  button.addEventListener('click', async () => {
+    deletePrivacy();
+    const options = {
+      method: 'DELETE',
+      headers: {
+        'Authorization': authenticatedUser.token
+    },
+    }
+    await deleteAuthenticatedUser(authenticatedUser.id, options);
+    clearAuthenticatedUser();
+    Navbar();
+    Navigate('/');
+  })
 }
 
 

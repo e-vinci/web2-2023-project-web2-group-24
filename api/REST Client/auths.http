@@ -30,6 +30,7 @@ Content-Type: application/json
 }
 
 ### Login the user Joachim
+# @name admin
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
@@ -37,3 +38,12 @@ Content-Type: application/json
     "username":"Joachim",
     "password":"1234"
 }
+
+### delete user Joachim
+DELETE {{baseUrl}}/auths/8
+Authorization: {{admin.response.body.token}}
+
+
+
+
+

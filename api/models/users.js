@@ -59,8 +59,15 @@ async function createOneUser(username, password, email) {
   await client.query("INSERT INTO web2.statistiques(utilisateur, nb_questions_posees, nb_parties_jouees, nb_victoire, categorie_preferee) VALUES ($1, 0, 0, 0, 'INFO')", [newUser.rows[0].no_utilisateur]);
 }
 
+async function deleteOneUser(id) {
+  await client.query('DELETE FROM web2.statistiques WHERE utilisateur = $1', [id]);
+  const deletedUser = await client.query('DELETE FROM web2.utilisateurs WHERE no_utilisateur = $1 RETURNING *', [id]);
+  return deletedUser.rows[0];
+}
+
 module.exports = {
   login,
   register,
   readOneUserFromUsername,
+  deleteOneUser,
 };
