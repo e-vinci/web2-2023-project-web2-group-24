@@ -11,4 +11,8 @@ const checkPrivacyKey = () => {
   return false;
 };
 
-export { setPrivacyKey, checkPrivacyKey };
+const deletePrivacy = () => {
+  localStorage.clear();
+}
+
+export { setPrivacyKey, checkPrivacyKey, deletePrivacy };

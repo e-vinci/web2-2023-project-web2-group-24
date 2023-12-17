@@ -25,11 +25,22 @@ Content-Type: application/json
 
 {
     "username":"Joachim",
-    "email":"b.qi@gmail.com",
+    "email":"m.qi@gmail.com",
+    "password":"1234"
+}
+
+### Create a user with javaScript injection
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"<p>coucou</p>",
+    "email":"f.qi@gmail.com",
     "password":"1234"
 }
 
 ### Login the user Joachim
+# @name admin
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
@@ -37,3 +48,12 @@ Content-Type: application/json
     "username":"Joachim",
     "password":"1234"
 }
+
+### delete user Joachim
+DELETE {{baseUrl}}/auths/2
+Authorization: {{admin.response.body.token}}
+
+
+
+
+

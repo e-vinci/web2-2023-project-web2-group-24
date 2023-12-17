@@ -1,5 +1,15 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable consistent-return */
+
+// *************************************************************************************
+// Title: <connection to database hosting service>
+// Author: <ElephantSQL>
+// Date: <December 16, 2023>
+// Code version: <>
+// Availability: <https://www.elephantsql.com/docs/nodejs.html>
+//
+// *************************************************************************************/
+
 const pg = require('pg');
 require('dotenv').config({ path: '../data_info.env' });
 
