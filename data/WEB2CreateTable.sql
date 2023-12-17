@@ -51,7 +51,7 @@ INSERT INTO web2.statistiques(utilisateur, nb_questions_posees, nb_parties_jouee
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Après avoir fini les 3 années de bachelier en instituteur primaire, nous sommes également diplomé comme maître spécial de religion',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Il y a des cours d''éducation corporelle', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Les études d''instituteur primaire se déroulent désormais en 4 ans',TRUE);
-INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Il faut d''abord avoir faut des études d''instituteur maternelle pour entamer celles d''instituteur primaire',FALSE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Il faut d''abord avoir fait des études d''instituteur maternelle pour entamer celles d''instituteur primaire',FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Il existe un cours d''éveil qui est constitué uniquement de ces deux matières : géographie et histoire',FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Les cours de psychologie permettent de comprendre plus facilement les comportement de chacun (HPI, TDAH, ...)',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Les instituteurs primaires sortants de la Haute Ecole Vinci sont capables de donner cours de religion', TRUE);
@@ -62,7 +62,7 @@ INSERT INTO web2.questions(categorie, question, valeur) VALUES ('ENSE','Dans cet
 
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'La radiographie est une modalité d’imagerie qui utilise des ondes sonores pour créer des images du corps humain', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Les rayons x sont utilisés dans une tomographie par ordinateur', TRUE);
-INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une IRM est une modalité d’imagerie utilisant un champ magnétiqque  et des ondes radio pour créer des images détaillées du corps', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Une IRM est une modalité d’imagerie utilisant un champ magnétiqque et des ondes radio pour créer des images détaillées du corps', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'Les rayons ultraviolets sont utilisés dans la spectroscopie par résonance magnétique ', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'On utilise les Rayons gamma pour détecter la radioactivité du corps.', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) VALUES ('IMGM', 'L’Angiographie est utilisée pour détecter les vaisseaux sanguins', TRUE);
@@ -95,14 +95,14 @@ INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','La Commi
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Les polices d’écriture sans-serif facilitent la lecture aux mal-voyants', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Les requêtes post servent à envoyer des données au serveur', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Le format fichier PNG est principalement utilisé pour des fichiers audio compressés', FALSE);
-INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Un email génère environ 4g de CO2', TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Un e-mail génère environ 4g de CO2', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','La consommation de vidéos en streaming génère 300 millions de tonnes de CO2 par an ', TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','TDD signifie To Do Documentation', FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFO','Un framework est un schéma des différentes pages d’un site web ', FALSE);
 
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','Les agonistes sont des substances qui bloquent les récepteurs cellulaires',FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','Les médicaments génériques ont les mêmes ingrédients actifs que les médicaments de marque',TRUE);
-INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','La pharmacocinétique étudie la manière dont le corps absorbe, distribue, métabolise et excrète les médicamentss',TRUE);
+INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','La pharmacocinétique étudie la manière dont le corps absorbe, distribue, métabolise et excrète les médicaments',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','Les diurétiques sont des médicaments qui augmentent la pression artérielle',FALSE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','L''obtention d''un diplôme en soins infirmiers nécessite des stages pratiques en milieu hospitalier',TRUE);
 INSERT INTO web2.questions(categorie, question, valeur) values ('INFI','Les infirmiers ne sont pas autorisés à effectuer des prélèvements sanguins',FALSE);
