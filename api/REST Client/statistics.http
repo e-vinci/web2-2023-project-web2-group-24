@@ -40,7 +40,7 @@ Authorization: {{admin.response.body.token}}
     "favoriteCategory": "ENSE"
 }
 
-### Try to update the statistics of player 1 but with a wrong statistic
+### Try to update the statistics of player 1 but with a wrong statistic (gameWin is not boolean)
 PUT {{baseUrl}}/statistics/2
 Content-Type: application/json
 Authorization: {{admin.response.body.token}}

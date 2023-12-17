@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const escape = require('escape-html');
 const client = require('../elephantsql');
 
 const jwtSecret = 'ilovemyquizz!';
@@ -33,7 +34,9 @@ async function register(username, password, email) {
   const userFound = await readOneUserFromUsername(username, email);
   if (userFound) return undefined;
 
-  await createOneUser(username, password, email);
+  const escapedUsername = escape(username);
+
+  await createOneUser(escapedUsername, password, email);
 
   /* const token = jwt.sign(
     { username }, // session data added to the payload (payload : part 2 of a JWT)
@@ -42,7 +45,7 @@ async function register(username, password, email) {
   ); */
 
   const authenticatedUser = {
-    username,
+    username: escapedUsername,
   };
 
   return authenticatedUser;
