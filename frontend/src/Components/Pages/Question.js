@@ -1,3 +1,4 @@
+import anime from 'animejs/lib/anime.es';
 import { checkWin, nextPlayer } from '../../models/player';
 import getOneQuestion from '../../models/question';
 import { clearPage, hideFooter } from '../../utils/render';
@@ -157,11 +158,47 @@ function checkAnswer(answer){
         if (checkWin()=== true){
             Navigate('/win')
         }else{
+            spanAnswer.innerHTML = spanAnswer.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+            anime.timeline({loop: true})
+            .add({
+                targets: '#answer .letter',
+                scale: [4,1],
+                opacity: [0,1],
+                translateZ: 0,
+                easing: "easeOutExpo",
+                duration: 950,
+                delay: (el, i) => 70*i
+            }).add({
+                targets: '#answer',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
             setTimeout(() => {
                 Navigate('/game')
             }, 2000)}
         } else{
         spanAnswer.innerHTML=`C'est une mauvaise réponse !`
+        spanAnswer.innerHTML = spanAnswer.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+            anime.timeline({loop: true})
+            .add({
+                targets: '#answer .letter',
+                scale: [4,1],
+                opacity: [0,1],
+                translateZ: 0,
+                easing: "easeOutExpo",
+                duration: 950,
+                delay: (el, i) => 70*i
+            }).add({
+                targets: '#answer',
+                opacity: 0,
+                duration: 1000,
+                easing: "easeOutExpo",
+                delay: 1000
+            });
         setTimeout(() => {
             Navigate('/game')
         }, 2000);
